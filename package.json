@@ -36,7 +36,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace nativeflowcss-example",
+    "example": "npm run example --workspace=example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -116,7 +116,6 @@
   "workspaces": [
     "example"
   ],
-  "packageManager": "yarn@3.6.1",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
@@ -427,7 +426,6 @@
     "find-babel-config": "^2.1.1",
     "find-cache-dir": "^2.1.0",
     "find-up": "^5.0.0",
-    "find-yarn-workspace-root": "^2.0.0",
     "flat-cache": "^3.2.0",
     "flatted": "^3.3.1",
     "flow-enums-runtime": "^0.0.6",
@@ -482,7 +480,6 @@
     "has-proto": "^1.0.3",
     "has-symbols": "^1.0.3",
     "has-tostringtag": "^1.0.2",
-    "has-yarn": "^3.0.0",
     "hasown": "^2.0.2",
     "hermes-estree": "^0.19.1",
     "hermes-parser": "^0.19.1",
@@ -574,7 +571,6 @@
     "is-weakset": "^2.0.3",
     "is-windows": "^1.0.2",
     "is-wsl": "^2.2.0",
-    "is-yarn-global": "^0.4.1",
     "isarray": "^2.0.5",
     "isexe": "^2.0.0",
     "isobject": "^3.0.1",
@@ -719,6 +715,7 @@
     "mute-stream": "^1.0.0",
     "mz": "^2.7.0",
     "nanoid": "^3.3.7",
+    "nativeflowcss-example": "^1.0.0",
     "natural-compare": "^1.4.0",
     "natural-compare-lite": "^1.4.0",
     "negotiator": "^0.6.3",

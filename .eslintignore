@@ -20,5 +20,5 @@ lefthook.yml
 .prettierrc
 .watchmanconfig
 .yarnrc.yml
-babelconfig.js
+babel.config.js
 bob.config.js

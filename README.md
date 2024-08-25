@@ -14,7 +14,15 @@ npm install nativeflowcss
 import { p, m, flex, border } from 'nativeflowcss';
 
 // ...
-<View style={[ flex.row, flex.justify("around"), flex.gap(12), flex.items("center"), flex.f(1)]}></View>
+<View
+  style={[
+    flex.row,
+    flex.justify('around'),
+    flex.gap(12),
+    flex.items('center'),
+    flex.f(1),
+  ]}
+></View>;
 ```
 
 ## Contributing

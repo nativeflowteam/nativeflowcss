@@ -1,0 +1,24 @@
+#node.js
+node_modules/
+lib/
+package-lock.json
+package.json
+
+#example
+example/
+
+# ci-cd
+workflows/
+lefthook.yml
+
+#config
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitattributes
+.gitignore
+.prettierrc
+.watchmanconfig
+.yarnrc.yml
+babelconfig.js
+bob.config.js

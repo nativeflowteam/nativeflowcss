@@ -44,34 +44,34 @@
     "prepare": "bob build",
     "release": "release-it"
   },
-    "keywords": [
-      "react-native",
-      "tailwind-css",
-      "utility-first",
-      "css-in-js",
-      "no-babel",
-      "easy-setup",
-      "one-package",
-      "ui-library",
-      "mobile-ui",
-      "cross-platform",
-      "ios",
-      "android",
-      "flexbox",
-      "minimalist",
-      "tailwind",
-      "responsive",
-      "design-system",
-      "native",
-      "styling",
-      "lightweight",
-      "performance",
-      "customizable",
-      "theme",
-      "mobile-first",
-      "react-native-styling",
-      "react-native-tailwind",
-      "react-native-utility"
+  "keywords": [
+    "react-native",
+    "tailwind-css",
+    "utility-first",
+    "css-in-js",
+    "no-babel",
+    "easy-setup",
+    "one-package",
+    "ui-library",
+    "mobile-ui",
+    "cross-platform",
+    "ios",
+    "android",
+    "flexbox",
+    "minimalist",
+    "tailwind",
+    "responsive",
+    "design-system",
+    "native",
+    "styling",
+    "lightweight",
+    "performance",
+    "customizable",
+    "theme",
+    "mobile-first",
+    "react-native-styling",
+    "react-native-tailwind",
+    "react-native-utility"
   ],
   "repository": {
     "type": "git",
@@ -145,62 +145,6 @@
         "preset": "angular"
       }
     }
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@react-native",
-      "prettier"
-    ],
-    "rules": {
-      "react/react-in-jsx-scope": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "singleQuote": true,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
-  "prettier": {
-    "quoteProps": "consistent",
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      [
-        "commonjs",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "module",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "esm": true
-        }
-      ]
-    ]
   },
   "create-react-native-library": {
     "type": "library",

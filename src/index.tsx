@@ -1,22 +1,6 @@
-type Padding = {
-  padding?: number;
-  paddingTop?: number;
-  paddingBottom?: number;
-  paddingLeft?: number;
-  paddingRight?: number;
-  paddingHorizontal?: number;
-  paddingVertical?: number;
-};
-
-type Margin = {
-  margin?: number;
-  marginTop?: number;
-  marginBottom?: number;
-  marginLeft?: number;
-  marginRight?: number;
-  marginHorizontal?: number;
-  marginVertical?: number;
-};
+// Spacing
+import p from './spacing/padding';
+import m from './spacing/margin';
 
 type Flex = {
   flex?: number;
@@ -36,54 +20,6 @@ type Border = {
   borderBottomWidth?: number;
   borderLeftWidth?: number;
   borderRightWidth?: number;
-};
-
-const p = {
-  p: (num: number): Padding => ({
-    padding: num,
-  }),
-  t: (num: number): Padding => ({
-    paddingTop: num,
-  }),
-  b: (num: number): Padding => ({
-    paddingBottom: num,
-  }),
-  l: (num: number): Padding => ({
-    paddingLeft: num,
-  }),
-  r: (num: number): Padding => ({
-    paddingRight: num,
-  }),
-  x: (num: number): Padding => ({
-    paddingHorizontal: num,
-  }),
-  y: (num: number): Padding => ({
-    paddingVertical: num,
-  }),
-};
-
-const m = {
-  m: (num: number): Margin => ({
-    margin: num,
-  }),
-  t: (num: number): Margin => ({
-    marginTop: num,
-  }),
-  b: (num: number): Margin => ({
-    marginBottom: num,
-  }),
-  l: (num: number): Margin => ({
-    marginLeft: num,
-  }),
-  r: (num: number): Margin => ({
-    marginRight: num,
-  }),
-  x: (num: number): Margin => ({
-    marginHorizontal: num,
-  }),
-  y: (num: number): Margin => ({
-    marginVertical: num,
-  }),
 };
 
 const flex = {

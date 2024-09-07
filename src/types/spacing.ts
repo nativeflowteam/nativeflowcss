@@ -1,4 +1,4 @@
-type Padding = {
+export type Padding = {
   padding?: number;
   paddingTop?: number;
   paddingBottom?: number;
@@ -10,7 +10,7 @@ type Padding = {
   paddingEnd?: number;
 };
 
-type Margin = {
+export type Margin = {
   margin?: number;
   marginTop?: number;
   marginBottom?: number;
@@ -21,5 +21,3 @@ type Margin = {
   marginStart?: number;
   marginEnd?: number;
 };
-
-export type { Padding, Margin };

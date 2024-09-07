@@ -3,3 +3,5 @@ export type AspectRatio = {
 };
 
 export type Direction = 'inherit' | 'ltr' | 'rtl';
+
+export type Display = 'none' | 'flex';

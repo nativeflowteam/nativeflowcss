@@ -1,0 +1,41 @@
+name: "Flows"
+on:
+  pull_request: {}
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/labeler@v3
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          configuration-path: .github/labeler.yml
+      - name: Comment on new issues
+        if: github.event_name == 'issues' && github.event.action == 'opened'
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thank you for opening this issue 🎉
+
+            Please do not start working on this issue or submit a pull request until a maintainer has assigned it to you. This helps us manage the workflow and avoid duplicate efforts.
+
+            >We appreciate your understanding and cooperation.
+      - name: Mark stale issues and PRs
+        uses: actions/stale@v3
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          stale-issue-message: "This issue has been automatically marked as stale due to inactivity for more than 30 days."
+          stale-pr-message: "This pull request has been automatically marked as stale due to inactivity for more than 30 days."
+          days-before-stale: 30
+          stale-issue-label: "Stale"
+          stale-pr-label: "Stale"

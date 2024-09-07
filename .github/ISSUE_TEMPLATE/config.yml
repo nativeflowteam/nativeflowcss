@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📰 Documentation website
+    url: https://nativeflowcssteam/documentation
+    about: This repository is for the npm library. For code related to the documentation, please visit the documentation repository.
+  - name: 📟 Join us on Discord
+    url: https://discord.gg/your-discord-invite-link
+    about: Ask questions and get help from the community on our Discord server.

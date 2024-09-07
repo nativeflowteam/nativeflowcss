@@ -1,18 +1,18 @@
 import type { Direction } from '../types/layout';
 
-const directionValues: { [key: string]: Direction } = {
+const directionValues: { [key: string]: Direction['direction'] } = {
   inherit: 'inherit',
   ltr: 'ltr',
   rtl: 'rtl',
 };
 
-const getDirectionValue = (key: string): { direction: Direction } => {
+const getDirectionValue = (key: string): Direction => {
   const value = directionValues[key];
   if (value === undefined) throw new Error(`Invalid direction key: ${key}`);
   return { direction: value };
 };
 
-const direction: { [key: string]: { direction: Direction } } = {};
+const direction: { [key: string]: Direction } = {};
 
 Object.keys(directionValues).forEach((key) => {
   direction[key] = getDirectionValue(key);

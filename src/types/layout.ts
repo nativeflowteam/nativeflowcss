@@ -2,8 +2,14 @@ export type AspectRatio = {
   aspectRatio: number | string;
 };
 
-export type Direction = 'inherit' | 'ltr' | 'rtl';
+export type Direction = {
+  direction: 'inherit' | 'ltr' | 'rtl';
+};
 
-export type Display = 'none' | 'flex';
+export type Display = {
+  display: 'none' | 'flex';
+};
 
-export type ResizeMode = 'cover' | 'contain' | 'stretch' | 'repeat' | 'center';
+export type ResizeMode = {
+  resizeMode: 'cover' | 'contain' | 'stretch' | 'repeat' | 'center';
+};

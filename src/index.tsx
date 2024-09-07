@@ -2,6 +2,12 @@
 import p from './spacing/padding';
 import m from './spacing/margin';
 
+// Layout
+import aspect_ratio from './layout/aspect-ratio';
+import object_fit from './layout/object-fit';
+import display from './layout/display';
+import direction from './layout/direction';
+
 type Flex = {
   flex?: number;
   gap?: number;
@@ -79,4 +85,4 @@ const border = {
   }),
 };
 
-export { p, m, flex, border };
+export { object_fit, display, direction, aspect_ratio, p, m, flex, border };

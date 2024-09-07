@@ -27,4 +27,4 @@ Object.keys(resizeModeValues).forEach((key) => {
 // const repeatResizeMode = object_fit.repeat; // { resizeMode: 'repeat' }
 // const centerResizeMode = object_fit.center; // { resizeMode: 'center' }
 
-export { object_fit };
+export default object_fit;

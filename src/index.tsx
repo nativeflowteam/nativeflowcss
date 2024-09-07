@@ -7,6 +7,9 @@ import aspect_ratio from './layout/aspect-ratio';
 import object_fit from './layout/object-fit';
 import display from './layout/display';
 import direction from './layout/direction';
+import pos from './layout/position';
+import z from './layout/z-index';
+import overflow from './layout/overflow';
 
 type Flex = {
   flex?: number;
@@ -85,4 +88,16 @@ const border = {
   }),
 };
 
-export { object_fit, display, direction, aspect_ratio, p, m, flex, border };
+export {
+  object_fit,
+  display,
+  direction,
+  aspect_ratio,
+  z,
+  pos,
+  overflow,
+  p,
+  m,
+  flex,
+  border,
+};

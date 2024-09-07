@@ -6,21 +6,21 @@ const directionValues: { [key: string]: Direction } = {
   rtl: 'rtl',
 };
 
-const getDirectionValue = (key: string): Direction => {
+const getDirectionValue = (key: string): { direction: Direction } => {
   const value = directionValues[key];
   if (value === undefined) throw new Error(`Invalid direction key: ${key}`);
-  return value;
+  return { direction: value };
 };
 
-const direction: any = {};
+const direction: { [key: string]: { direction: Direction } } = {};
 
 Object.keys(directionValues).forEach((key) => {
   direction[key] = getDirectionValue(key);
 });
 
 // Example usage
-// const inheritDirection = direction.inherit; // 'inherit'
-// const ltrDirection = direction.ltr; // 'ltr'
-// const rtlDirection = direction.rtl; // 'rtl'
+// const inheritDirection = direction.inherit; // { direction: 'inherit' }
+// const ltrDirection = direction.ltr; // { direction: 'ltr' }
+// const rtlDirection = direction.rtl; // { direction: 'rtl' }
 
 export { direction };

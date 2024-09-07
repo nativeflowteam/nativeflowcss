@@ -23,4 +23,4 @@ Object.keys(directionValues).forEach((key) => {
 // const ltrDirection = direction.ltr; // { direction: 'ltr' }
 // const rtlDirection = direction.rtl; // { direction: 'rtl' }
 
-export { direction };
+export default direction;

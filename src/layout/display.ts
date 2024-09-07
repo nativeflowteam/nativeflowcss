@@ -21,4 +21,4 @@ Object.keys(displayValues).forEach((key) => {
 // const hiddenDisplay = display.hidden; // { display: 'none' }
 // const flexDisplay = display.flex; // { display: 'flex' }
 
-export { display };
+export default display;

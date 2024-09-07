@@ -13,3 +13,5 @@ export type Display = {
 export type ResizeMode = {
   resizeMode: 'cover' | 'contain' | 'stretch' | 'repeat' | 'center';
 };
+
+export type PositionValue = { [key: string]: number | string };

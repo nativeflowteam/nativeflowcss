@@ -1,4 +1,4 @@
-name: "Flows"
+name: "Issue Manager"
 on:
   pull_request: {}
   issues:
@@ -14,10 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/labeler@v3
-        with:
-          repo-token: "${{ secrets.PAT }}"
-          configuration-path: .github/labeler.yml
       - name: Comment on new issues
         if: github.event_name == 'issues' && github.event.action == 'opened'
         uses: peter-evans/create-or-update-comment@v1

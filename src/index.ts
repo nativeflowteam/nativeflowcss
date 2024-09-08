@@ -11,16 +11,10 @@ import pos from './layout/position';
 import z from './layout/z-index';
 import overflow from './layout/overflow';
 
-type Flex = {
-  flex?: number;
-  gap?: number;
-  justifyContent?: string;
-  alignItems?: string;
-  flexWrap?: string;
-  alignContent?: string;
-  alignSelf?: string;
-  flexDirection?: string;
-};
+// Flexbox
+import flex from './flexbox/flex';
+import align from './flexbox/align';
+import justify from './flexbox/justify';
 
 type Border = {
   borderWidth?: number;
@@ -29,42 +23,6 @@ type Border = {
   borderBottomWidth?: number;
   borderLeftWidth?: number;
   borderRightWidth?: number;
-};
-
-const flex = {
-  f: (num: number = 1): Flex => ({
-    flex: num,
-  }),
-  gap: (num: number = 0): Flex => ({
-    gap: num,
-  }),
-  justify: (value: string = 'flex-start'): Flex => ({
-    justifyContent: value,
-  }),
-  items: (value: string = 'stretch'): Flex => ({
-    alignItems: value,
-  }),
-  wrap: (value: string = 'nowrap'): Flex => ({
-    flexWrap: value,
-  }),
-  alignContent: (value: string = 'flex-start'): Flex => ({
-    alignContent: value,
-  }),
-  alignSelf: (value: string = 'auto'): Flex => ({
-    alignSelf: value,
-  }),
-  row: {
-    flexDirection: 'row',
-  } as Flex,
-  row_reverse: {
-    flexDirection: 'row-reverse',
-  } as Flex,
-  col: {
-    flexDirection: 'column',
-  } as Flex,
-  column_reverse: {
-    flexDirection: 'column-reverse',
-  } as Flex,
 };
 
 const border = {
@@ -99,5 +57,7 @@ export {
   p,
   m,
   flex,
+  align,
+  justify,
   border,
 };

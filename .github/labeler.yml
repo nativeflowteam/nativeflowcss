@@ -1,20 +1,20 @@
 "Spacing":
-  - "src/spacing/**/*"
+  - "src/spacing/*"
 
 "Flexbox":
-  - "src/flexbox/**/*"
+  - "src/flexbox/*"
 
-"Borders":
-  - "src/borders/**/*"
+"Border":
+  - "src/border/*"
 
 "Typography":
-  - "src/typography/**/*"
+  - "src/typography/*"
 
 "Layout":
-  - "src/layout/**/*"
+  - "src/layout/*"
 
-"Backgrounds":
-  - "src/backgrounds/**/*"
+"Effects":
+  - "src/effects/*"
 
 "Sizing":
-  - "src/sizing/**/*"
+  - "src/sizing/*"

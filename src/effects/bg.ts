@@ -1,13 +1,6 @@
 import colorList from '../utils/colorList';
 import type { ViewStyle, ImageStyle } from 'react-native';
-
-// Define the type for bg object
-interface BgStyles {
-  [key: string]:
-    | ViewStyle
-    | ImageStyle
-    | ((...args: any[]) => ViewStyle | ImageStyle);
-}
+import type { BgStyles } from '../types/effects';
 
 const bg: BgStyles = {
   // Custom background color

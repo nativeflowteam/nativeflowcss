@@ -1,8 +1,8 @@
 {
   "name": "nativeflowcss",
-  "version": "1.0.0",
-  "description": "A utility-first CSS-in-JS framework tailored for React Native, offering a rich set of utilities such as flex.justify('center'), m.b(4), and`border.color('#cccccc'). These utilities can be composed to create any design, similar to the approach used by Tailwind CSS.",
-  "source": "./src/index.tsx",
+  "version": "1.1.10",
+  "description": "A utility-first styling objects for React Native, syntax similar to Tailwind.",
+  "source": "./src/index.ts",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
   "exports": {
@@ -39,7 +39,7 @@
     "example": "npm run example --workspace=example",
     "test": "jest",
     "typecheck": "tsc",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint \"**/*.{js,ts}\"",
     "clean": "del-cli lib",
     "prepare": "bob build",
     "release": "release-it"
@@ -75,14 +75,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nativeflowcrafts/nativeflowcss.git"
+    "url": "git+https://github.com/nativeflowteam/nativeflowcss"
   },
-  "author": "Jay Singh <work.jayssingh@gmail.com> (https://github.com/nativeflowcrafts)",
+  "author": "Jay Singh <work.jayssingh@gmail.com> (https://github.com/nativeflowteam)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nativeflowcrafts/nativeflowcss/issues"
   },
-  "homepage": "https://github.com/nativeflowcrafts/nativeflowcss#readme",
+  "homepage": "https://nativeflow.js.org",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

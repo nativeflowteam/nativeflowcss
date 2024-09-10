@@ -1,6 +1,12 @@
-# NativeFlow
+<div align="center">
 
-A utility-first CSS-in-JS framework tailored for React Native, offering a rich set of utilities such as `flex.justify('center')`, `m.b(4)`, and `border.color('#cccccc')`. These utilities can be composed to create any design, similar to the approach used by Tailwind CSS.
+  <img src="./assets/display-name.svg" alt="Display Name">
+  
+  <p>
+  A utility-first styling object library tailored for React Native, offering a rich set of utilities such as `justify-center`, `m.b_(4)`, and `bdr.color_slate_200`. These utilities can be composed to create any design, similar to the approach used by Tailwind.
+  </p>
+
+</div>
 
 ## Installation
 
@@ -8,22 +14,7 @@ A utility-first CSS-in-JS framework tailored for React Native, offering a rich s
 npm install nativeflowcss
 ```
 
-## Usage
-
-```js
-import { p, m, flex, border } from 'nativeflowcss';
-
-// ...
-<View
-  style={[
-    flex.row,
-    flex.justify('around'),
-    flex.gap(12),
-    flex.items('center'),
-    flex.f(1),
-  ]}
-></View>;
-```
+> For comprehensive Guide on NativeFlow, Read our [Documentation](https://nativeflow.js.org)
 
 ## Contributing
 

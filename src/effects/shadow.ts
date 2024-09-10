@@ -1,10 +1,6 @@
 import type { ViewStyle } from 'react-native';
 import colorList from '../utils/colorList';
-
-// Define the type for shadow object
-interface ShadowStyles {
-  [key: string]: ViewStyle | ((...args: any[]) => ViewStyle);
-}
+import type { ShadowStyles } from '../types/effects';
 
 const shadow: ShadowStyles = {
   // Shadow color

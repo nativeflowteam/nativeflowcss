@@ -1,10 +1,6 @@
 import type { TextStyle } from 'react-native';
+import type { BorderStyles } from '../types/border';
 import colorList from '../utils/colorList';
-
-// Define the type for bdr object
-interface BorderStyles {
-  [key: string]: TextStyle | ((...args: any[]) => TextStyle);
-}
 
 const bdr: BorderStyles = {
   // Border color

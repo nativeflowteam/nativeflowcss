@@ -20,6 +20,11 @@ Closes #XXXXX
 
 ## Additional Information
 <!-- Any other information about this PR, such as a link to a Discord discussion. -->
+*No response*
+
+### (Optional) Discord username
+<!-- server link -->
+*No response*
 
 ## Pull Request Requirements
 <!-- Replace the whitespace between the square brackets with an 'x', e.g. [x] or After you create the PR, they will become checkboxes that you can click on. -->

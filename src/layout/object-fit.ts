@@ -1,24 +1,16 @@
-import type { ResizeMode } from '../types/layout';
+import type { SizeMode } from '../types/layout';
 
-const resizeModeValues: { [key: string]: ResizeMode['resizeMode'] } = {
-  cover: 'cover',
-  contain: 'contain',
-  stretch: 'stretch',
-  repeat: 'repeat',
-  center: 'center',
+const object_fit: {
+  [key: string]: { resizeMode: SizeMode } | { objectFit: SizeMode };
+} = {
+  cover: { resizeMode: 'cover' },
+  contain: { resizeMode: 'contain' },
+  stretch: { resizeMode: 'stretch' },
+  repeat: { resizeMode: 'repeat' },
+  center: { resizeMode: 'center' },
+  fill: { objectFit: 'fill' },
+  scale_down: { objectFit: 'scale_down' },
 };
-
-const getResizeModeValue = (key: string): ResizeMode => {
-  const value = resizeModeValues[key];
-  if (value === undefined) throw new Error(`Invalid resize mode key: ${key}`);
-  return { resizeMode: value };
-};
-
-const object_fit: { [key: string]: ResizeMode } = {};
-
-Object.keys(resizeModeValues).forEach((key) => {
-  object_fit[key] = getResizeModeValue(key);
-});
 
 // Example usage
 // const coverResizeMode = object_fit.cover; // { resizeMode: 'cover' }
@@ -26,5 +18,7 @@ Object.keys(resizeModeValues).forEach((key) => {
 // const stretchResizeMode = object_fit.stretch; // { resizeMode: 'stretch' }
 // const repeatResizeMode = object_fit.repeat; // { resizeMode: 'repeat' }
 // const centerResizeMode = object_fit.center; // { resizeMode: 'center' }
+// const fillResizeMode = object_fit.fill; // { objectFit: 'fill' }
+// const scaleDownResizeMode = object_fit.scale_down; // { objectFit: 'scale_down' }
 
 export default object_fit;

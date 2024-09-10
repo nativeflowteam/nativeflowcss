@@ -19,5 +19,8 @@
 "Sizing":
   - "src/sizing/*"
 
+"Transforms":
+  - "src/transforms/*"
+
 "CI":
   - ".github/**/*"

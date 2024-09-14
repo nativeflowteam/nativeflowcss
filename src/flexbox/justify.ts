@@ -8,13 +8,13 @@ const justify = {
   content_end: {
     justifyContent: 'flex-end',
   },
-  content_space_between: {
+  content_between: {
     justifyContent: 'space-between',
   },
-  content_space_around: {
+  content_around: {
     justifyContent: 'space-around',
   },
-  content_space_evenly: {
+  content_evenly: {
     justifyContent: 'space-evenly',
   },
 };

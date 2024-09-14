@@ -26,10 +26,10 @@ const align = {
   content_stretch: {
     alignContent: 'stretch',
   },
-  content_space_between: {
+  content_between: {
     alignContent: 'space-between',
   },
-  content_space_around: {
+  content_around: {
     alignContent: 'space-around',
   },
   self_auto: {

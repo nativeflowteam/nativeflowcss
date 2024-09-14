@@ -1,15 +1,11 @@
 import type { PositionValue } from '../types/layout';
 
-const positions = {
+const positions: { [key: string]: number } = {
   '0': 0,
   'px': 1,
-  '0.5': 2,
   '1': 4,
-  '1.5': 6,
   '2': 8,
-  '2.5': 10,
   '3': 12,
-  '3.5': 14,
   '4': 16,
   '5': 20,
   '6': 24,
@@ -36,25 +32,6 @@ const positions = {
   '72': 288,
   '80': 320,
   '96': 384,
-  'auto': 'auto',
-  '1/2': '50%',
-  '1/3': '33.333333%',
-  '2/3': '66.666667%',
-  '1/4': '25%',
-  '2/4': '50%',
-  '3/4': '75%',
-  'full': '100%',
-};
-
-// Magik
-const generatePositionProperties = (
-  key: string
-): { [key: string]: PositionValue } => {
-  const values: { [key: string]: PositionValue } = {};
-  for (const [posKey, posValue] of Object.entries(positions)) {
-    values[`${key}_${posKey.replace('/', '_')}`] = { [key]: posValue };
-  }
-  return values;
 };
 
 // Now explicitly include the custom methods and the index signature for dynamically generated properties
@@ -63,10 +40,6 @@ const pos: {
   absolute: { position: string };
   fixed: { position: string };
   sticky: { position: string };
-  r_custom: (value: number) => PositionValue;
-  t_custom: (value: number) => PositionValue;
-  l_custom: (value: number) => PositionValue;
-  b_custom: (value: number) => PositionValue;
   [key: string]:
     | PositionValue
     | { position: string }
@@ -78,30 +51,43 @@ const pos: {
   fixed: { position: 'fixed' },
   sticky: { position: 'sticky' },
 
-  ...generatePositionProperties('right'),
-  ...generatePositionProperties('top'),
-  ...generatePositionProperties('left'),
-  ...generatePositionProperties('bottom'),
-
-  r_custom(value: number): PositionValue {
-    return { right: value };
+  r_(value: number | string): PositionValue {
+    return { right: Number(value) };
   },
-  t_custom(value: number): PositionValue {
-    return { top: value };
+  t_(value: number): PositionValue {
+    return { top: Number(value) };
   },
-  l_custom(value: number): PositionValue {
-    return { left: value };
+  l_(value: number): PositionValue {
+    return { left: Number(value) };
   },
-  b_custom(value: number): PositionValue {
-    return { bottom: value };
+  b_(value: number): PositionValue {
+    return { bottom: Number(value) };
   },
 };
+
+Object.keys(positions).forEach((posKey) => {
+  pos[`t_${posKey}`] = {
+    top: positions[posKey],
+  } as PositionValue;
+
+  pos[`r_${posKey}`] = {
+    right: positions[posKey],
+  } as PositionValue;
+
+  pos[`b_${posKey}`] = {
+    bottom: positions[posKey],
+  } as PositionValue;
+
+  pos[`l_${posKey}`] = {
+    left: positions[posKey],
+  } as PositionValue;
+});
 
 // Example usage
 // console.log(pos.relative); // { position: 'relative' }
 // console.log(pos.right_1); // { right: 4 }
 // console.log(pos.top_2); // { top: 8 }
-// console.log(pos.left_1_2); // { left: '50%' }
-// console.log(pos.b_custom(20)); // { bottom: 20 }
+// console.log(pos.left_1); // { left: '50%' }
+// console.log(pos.b_(20)); // { bottom: 20 }
 
 export default pos;

@@ -22,5 +22,8 @@
 "Transforms":
   - "src/transforms/*"
 
+"Shadow":
+  - "src/shadow/*"
+
 "CI":
   - ".github/**/*"

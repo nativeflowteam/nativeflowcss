@@ -1,6 +1,6 @@
 {
   "name": "nativeflowcss",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "description": "A utility-first styling objects for React Native, syntax similar to Tailwind.",
   "source": "./src/index.ts",
   "main": "./lib/commonjs/index.js",

@@ -1,20 +1,27 @@
-const zIndex = {
-  z_0: { zIndex: 0 },
-  z_10: { zIndex: 10 },
-  z_20: { zIndex: 20 },
-  z_30: { zIndex: 30 },
-  z_40: { zIndex: 40 },
-  z_50: { zIndex: 50 },
-  z_auto: { zIndex: 'auto' },
+const z = {
+  index_0: { zIndex: 0 },
+  index_10: { zIndex: 10 },
+  index_20: { zIndex: 20 },
+  index_30: { zIndex: 30 },
+  index_40: { zIndex: 40 },
+  index_50: { zIndex: 50 },
+  index_auto: { zIndex: 'auto' },
+
+  index_(value: number | string): { zIndex: number | 'auto' } {
+    if (value === 'auto') {
+      return { zIndex: 'auto' };
+    } else if (!isNaN(Number(value))) {
+      return { zIndex: Number(value) };
+    } else {
+      throw new Error('Invalid zIndex value');
+    }
+  },
 };
 
 // Example usage
-// console.log(zIndex.z_0); // { zIndex: 0 }
-// console.log(zIndex.z_10); // { zIndex: 10 }
-// console.log(zIndex.z_20); // { zIndex: 20 }
-// console.log(zIndex.z_30); // { zIndex: 30 }
-// console.log(zIndex.z_40); // { zIndex: 40 }
-// console.log(zIndex.z_50); // { zIndex: 50 }
-// console.log(zIndex.z_auto); // { zIndex: 'auto' }
+// console.log(z.index_(10)); // { zIndex: 10 }
+// console.log(z.index_('auto')); // { zIndex: 'auto' }
+// console.log(z.index_('20')); // { zIndex: 20 }
+// console.log(z.index_('invalid')); // Error: Invalid zIndex value
 
-export default zIndex;
+export default z;

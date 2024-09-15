@@ -15,49 +15,46 @@ import overflow from './layout/overflow';
 import flex from './flexbox/flex';
 import align from './flexbox/align';
 import justify from './flexbox/justify';
+import place from './flexbox/place';
 
-type Border = {
-  borderWidth?: number;
-  borderColor?: string;
-  borderTopWidth?: number;
-  borderBottomWidth?: number;
-  borderLeftWidth?: number;
-  borderRightWidth?: number;
-};
+// Border
+import bdr from './border/bdr';
 
-const border = {
-  width: (num: number = 1): Border => ({
-    borderWidth: num,
-  }),
-  color: (string: string): Border => ({
-    borderColor: string,
-  }),
-  t: (num: number = 1): Border => ({
-    borderTopWidth: num,
-  }),
-  b: (num: number = 1): Border => ({
-    borderBottomWidth: num,
-  }),
-  l: (num: number = 1): Border => ({
-    borderLeftWidth: num,
-  }),
-  r: (num: number = 1): Border => ({
-    borderRightWidth: num,
-  }),
-};
+// Effects
+import fx from './effects/fx';
+
+// Shadow
+import shadow from './shadow/shadow';
+
+// Sizing
+import h from './sizing/h';
+import w from './sizing/w';
+import size from './sizing/size';
+
+// Typography
+import text from './typography/text';
+import decoration from './typography/decoration';
 
 export {
+  p,
+  m,
+  aspect,
   object_fit,
   display,
   direction,
-  aspect,
-  z,
   pos,
+  z,
   overflow,
-  p,
-  m,
   flex,
   align,
   justify,
-  border,
+  place,
+  bdr,
+  fx,
+  shadow,
+  h,
+  w,
+  size,
+  text,
+  decoration,
 };

@@ -19,18 +19,21 @@ const shadow: ShadowStyles = {
   }),
 
   // Shadow radius
-  radius_: (value: number | string): ViewStyle => ({
+  rounded_: (value: number | string): ViewStyle => ({
     shadowRadius: Number(value),
   }),
-  radius_sm: { shadowRadius: 2 },
-  radius_base: { shadowRadius: 4 },
-  radius_lg: { shadowRadius: 8 },
-  radius_full: { shadowRadius: 9999 },
 
-  // Custom elevation
-  elevation_: (value: number | string): ViewStyle => ({
-    elevation: Number(value),
-  }),
+  // Default values for shadow radius
+  rounded_none: { shadowRadius: 0 },
+  rounded_xs: { shadowRadius: 1 },
+  rounded_sm: { shadowRadius: 2 },
+  rounded_md: { shadowRadius: 3 },
+  rounded_base: { shadowRadius: 4 },
+  rounded_lg: { shadowRadius: 8 },
+  rounded_xl: { shadowRadius: 12 },
+  rounded_2xl: { shadowRadius: 16 },
+  rounded_3xl: { shadowRadius: 24 },
+  rounded_full: { shadowRadius: 9999 },
 };
 
 // Dynamically add offset properties for 1-5 levels
@@ -40,14 +43,9 @@ for (let i = 1; i <= 5; i++) {
   } as ViewStyle;
 }
 
-// Dynamically add opacity properties for 1-10 levels
-for (let i = 1; i <= 10; i++) {
-  shadow[`opacity_${i}`] = { shadowOpacity: i / 10 } as ViewStyle;
-}
-
-// Dynamically add elevation properties for 1-10 levels
-for (let i = 1; i <= 10; i++) {
-  shadow[`elevation_${i}`] = { elevation: i } as ViewStyle;
+// Dynamically add opacity properties for 1-24 levels
+for (let i = 1; i <= 24; i++) {
+  shadow[`opacity_${i}`] = { shadowOpacity: i } as ViewStyle;
 }
 
 // Dynamically add color properties

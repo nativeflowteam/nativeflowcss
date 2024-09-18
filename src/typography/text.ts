@@ -91,33 +91,9 @@ const text: ColuredTextStyle = {
     textShadowOffset: { width: Number(widthVal), height: Number(heightVal) },
   }),
 
-  // Predefined text shadow offsets
-  shadow_offset_1: { textShadowOffset: { width: 1, height: 1 } },
-  shadow_offset_2: { textShadowOffset: { width: 2, height: 2 } },
-  shadow_offset_3: { textShadowOffset: { width: 3, height: 3 } },
-  shadow_offset_4: { textShadowOffset: { width: 4, height: 4 } },
-  shadow_offset_5: { textShadowOffset: { width: 5, height: 5 } },
-  shadow_offset_6: { textShadowOffset: { width: 6, height: 6 } },
-  shadow_offset_7: { textShadowOffset: { width: 7, height: 7 } },
-  shadow_offset_8: { textShadowOffset: { width: 8, height: 8 } },
-  shadow_offset_9: { textShadowOffset: { width: 9, height: 9 } },
-  shadow_offset_10: { textShadowOffset: { width: 10, height: 10 } },
-
   shadow_radius_: (radius: number | string): TextStyle => ({
     textShadowRadius: Number(radius),
   }),
-
-  // Predefined text shadow radii
-  shadow_radius_1: { textShadowRadius: 1 },
-  shadow_radius_2: { textShadowRadius: 2 },
-  shadow_radius_3: { textShadowRadius: 3 },
-  shadow_radius_4: { textShadowRadius: 4 },
-  shadow_radius_5: { textShadowRadius: 5 },
-  shadow_radius_6: { textShadowRadius: 6 },
-  shadow_radius_7: { textShadowRadius: 7 },
-  shadow_radius_8: { textShadowRadius: 8 },
-  shadow_radius_9: { textShadowRadius: 9 },
-  shadow_radius_10: { textShadowRadius: 10 },
 
   // User select
   select_auto: { userSelect: 'auto' as TextStyle['userSelect'] },
@@ -130,8 +106,25 @@ const text: ColuredTextStyle = {
 // Dynamically add color properties
 Object.keys(colorList).forEach((colorKey) => {
   text[`color_${colorKey}`] = {
-    textDecorationColor: colorList[colorKey],
+    color: colorList[colorKey],
   };
 });
+
+// Dynamically add shadow color properties
+Object.keys(colorList).forEach((colorKey) => {
+  text[`shadow_color_${colorKey}`] = {
+    textShadowColor: colorList[colorKey],
+  };
+});
+
+// Dynamically add shadow radius properties
+for (let i = 1; i <= 24; i++) {
+  text[`shadow_radius_${i}`] = { textShadowRadius: i };
+}
+
+// Dynamically add shadow offset properties
+for (let i = 1; i <= 24; i++) {
+  text[`shadow_offset_${i}`] = { textShadowOffset: { width: i, height: i } };
+}
 
 export default text;

@@ -1,20 +1,20 @@
 const justify = {
-  content_center: {
+  center: {
     justifyContent: 'center',
   },
-  content_start: {
+  start: {
     justifyContent: 'flex-start',
   },
-  content_end: {
+  end: {
     justifyContent: 'flex-end',
   },
-  content_between: {
+  between: {
     justifyContent: 'space-between',
   },
-  content_around: {
+  around: {
     justifyContent: 'space-around',
   },
-  content_evenly: {
+  evenly: {
     justifyContent: 'space-evenly',
   },
 };

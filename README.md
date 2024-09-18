@@ -43,4 +43,10 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 [MIT](LICENSE.md)
 
+## Donations
+
+[![ko-fi](./assets/badges/kofi.svg)](https://ko-fi.com/Z8Z113CQW5)
+[![paypal](./assets/badges/paypal.svg)](https://www.paypal.me/jayowiee/)
+[![patreon](./assets/badges/patreon.svg)](https://patreon.com/nativeflow)
+
 > Made with &hearts; using [create-react-native-library](https://github.com/callstack/react-native-builder-bob)

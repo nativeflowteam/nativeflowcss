@@ -1,5 +1,6 @@
 const size = {
   // Predefined size properties
+  s_0: { width: 0, height: 0 },
   s_1: { width: 4, height: 4 },
   s_2: { width: 8, height: 8 },
   s_3: { width: 12, height: 12 },

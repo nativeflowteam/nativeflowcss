@@ -67,7 +67,7 @@ const generatePadding = (type: string, key: string | number): Padding => {
   }
 };
 
-const p: any = {};
+const p: Record<string, Padding | ((key: string | number) => Padding)> = {};
 
 Object.keys(paddingValues).forEach((key) => {
   ['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe'].forEach((type) => {

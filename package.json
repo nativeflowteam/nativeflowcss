@@ -20,59 +20,19 @@
   "files": [
     "src",
     "lib",
-    "android",
-    "ios",
-    "cpp",
-    "*.podspec",
-    "!ios/build",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
     "!**/__tests__",
     "!**/__fixtures__",
-    "!**/__mocks__",
     "!**/.*"
   ],
   "scripts": {
-    "example": "npm run example --workspace=example",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"**/*.ts\"",
     "test": "jest",
-    "typecheck": "tsc",
-    "lint": "eslint \"**/*.{js,ts}\"",
     "clean": "del-cli lib",
-    "prepare": "bob build",
+    "prepare": "npm run build",
     "release": "release-it"
   },
-  "keywords": [
-    "react-native",
-    "tailwind-css",
-    "utility-first",
-    "css-in-js",
-    "no-babel",
-    "easy-setup",
-    "one-package",
-    "ui-library",
-    "mobile-ui",
-    "cross-platform",
-    "ios",
-    "android",
-    "flexbox",
-    "minimalist",
-    "tailwind",
-    "responsive",
-    "design-system",
-    "native",
-    "styling",
-    "lightweight",
-    "performance",
-    "customizable",
-    "theme",
-    "mobile-first",
-    "react-native-styling",
-    "react-native-tailwind",
-    "react-native-utility"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nativeflowteam/nativeflowcss"
@@ -86,40 +46,10 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "devDependencies": {
-    "@commitlint/config-conventional": "^17.0.2",
-    "@evilmartians/lefthook": "^1.5.0",
-    "@react-native/eslint-config": "^0.73.1",
-    "@release-it/conventional-changelog": "^8.0.1",
-    "@types/jest": "^29.5.5",
-    "@types/react": "^18.2.44",
-    "commitlint": "^17.0.2",
-    "del-cli": "^5.1.0",
-    "eslint": "^8.51.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "jest": "^29.7.0",
-    "prettier": "^3.0.3",
-    "react": "18.2.0",
-    "react-native": "0.74.5",
-    "react-native-builder-bob": "^0.30.0",
-    "release-it": "^17.6.0",
-    "typescript": "^5.2.2"
-  },
-  "resolutions": {
-    "@types/react": "^18.2.44"
-  },
-  "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
-  },
-  "workspaces": [
-    "example"
-  ],
   "jest": {
-    "preset": "react-native",
+    "preset": "ts-jest",
+    "testEnvironment": "node",
     "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
     ]
   },
@@ -145,12 +75,26 @@
       }
     }
   },
-  "create-react-native-library": {
-    "type": "library",
-    "version": "0.41.0"
-  },
-  "directories": {
-    "example": "example",
-    "lib": "lib"
+  "type": "module",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^20.5.3",
+    "@evilmartians/lefthook": "^2.1.6",
+    "@release-it/conventional-changelog": "^11.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.6.0",
+    "@types/react-native": "^0.72.8",
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
+    "commitlint": "^20.5.3",
+    "del-cli": "^7.0.0",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "jest": "^30.3.0",
+    "prettier": "^3.8.3",
+    "release-it": "^20.0.1",
+    "ts-jest": "^29.4.9",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
   }
 }

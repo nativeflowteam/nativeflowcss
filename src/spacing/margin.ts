@@ -67,7 +67,7 @@ const generateMargin = (type: string, key: string | number): Margin => {
   }
 };
 
-const m: any = {};
+const m: Record<string, Margin | ((key: string | number) => Margin)> = {};
 
 Object.keys(marginValues).forEach((key) => {
   ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me'].forEach((type) => {

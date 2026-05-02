@@ -1,4 +1,5 @@
 import type { Margin } from '../types/spacing';
+import type { DynamicArg, DynamicStyleMap } from '../types/maps';
 
 const marginValues: { [key: string]: number } = {
   '0': 0,
@@ -69,7 +70,7 @@ const generateMargin = (type: string, key: string | number): Margin => {
 };
 
 // prettier-ignore
-const m: Record<string, Margin | ((...keys: Array<string | number>) => Margin)> = {};
+const m: DynamicStyleMap<Margin> = {};
 
 const allMarginKeys = [...Object.keys(marginValues), 'auto'];
 
@@ -81,7 +82,7 @@ allMarginKeys.forEach((key) => {
 
 ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me'].forEach((type) => {
   if (type === 'm') {
-    m[`${type}_`] = (...keys: Array<string | number>): Margin => {
+    m[`${type}_`] = (...keys: Array<DynamicArg>): Margin => {
       if (keys.length === 1) return generateMargin(type, keys[0]);
       if (keys.length === 2) {
         const vertical = getMarginValue(keys[0]);
@@ -105,7 +106,7 @@ allMarginKeys.forEach((key) => {
     return;
   }
 
-  m[`${type}_`] = (key: string | number): Margin => generateMargin(type, key);
+  m[`${type}_`] = (key: DynamicArg): Margin => generateMargin(type, key);
 });
 
 // Example usage

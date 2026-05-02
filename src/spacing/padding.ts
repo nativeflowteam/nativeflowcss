@@ -1,4 +1,5 @@
 import type { Padding } from '../types/spacing';
+import type { DynamicArg, DynamicStyleMap } from '../types/maps';
 
 const paddingValues: { [key: string]: number } = {
   '0': 0,
@@ -69,7 +70,7 @@ const generatePadding = (type: string, key: string | number): Padding => {
 };
 
 // prettier-ignore
-const p: Record<string, Padding | ((...keys: Array<string | number>) => Padding)> = {};
+const p: DynamicStyleMap<Padding> = {};
 
 const allPaddingKeys = [...Object.keys(paddingValues), 'auto'];
 
@@ -81,7 +82,7 @@ allPaddingKeys.forEach((key) => {
 
 ['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe'].forEach((type) => {
   if (type === 'p') {
-    p[`${type}_`] = (...keys: Array<string | number>): Padding => {
+    p[`${type}_`] = (...keys: Array<DynamicArg>): Padding => {
       if (keys.length === 1) return generatePadding(type, keys[0]);
       if (keys.length === 2) {
         const vertical = getPaddingValue(keys[0]);
@@ -105,7 +106,7 @@ allPaddingKeys.forEach((key) => {
     return;
   }
 
-  p[`${type}_`] = (key: string | number): Padding => generatePadding(type, key);
+  p[`${type}_`] = (key: DynamicArg): Padding => generatePadding(type, key);
 });
 
 // Example usage

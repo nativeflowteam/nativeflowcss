@@ -47,9 +47,9 @@ const generateMargin = (type: string, key: string | number): Margin => {
     case 'm':
       return { margin: value };
     case 'mx':
-      return { marginLeft: value, marginRight: value };
+      return { marginHorizontal: value };
     case 'my':
-      return { marginTop: value, marginBottom: value };
+      return { marginVertical: value };
     case 'mt':
       return { marginTop: value };
     case 'mb':
@@ -81,8 +81,8 @@ Object.keys(marginValues).forEach((key) => {
 
 // Example usage
 // const marginStyle = m.m_1; // { margin: 4 }
-// const marginHorizontalStyle = m.mx_1; // { marginLeft: 4, marginRight: 4 }
-// const marginVerticalStyle = m.my_1; // { marginTop: 4, marginBottom: 4 }
+// const marginHorizontalStyle = m.mx_1; // {  marginHorizontal: 4 }
+// const marginVerticalStyle = m.my_1; // { marginVertical: 4 }
 // const marginTopStyle = m.mt_1; // { marginTop: 4 }
 // const marginBottomStyle = m.mb_1; // { marginBottom: 4 }
 // const marginRightStyle = m.mr_1; // { marginRight: 4 }

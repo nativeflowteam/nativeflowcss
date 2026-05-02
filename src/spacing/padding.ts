@@ -34,8 +34,9 @@ const paddingValues: { [key: string]: number } = {
   '96': 384,
 };
 
-const getPaddingValue = (key: string | number): number => {
+const getPaddingValue = (key: string | number): number | 'auto' => {
   if (typeof key === 'number') return key;
+  if (key === 'auto') return 'auto';
   const value = paddingValues[key] ?? parseInt(key, 10);
   if (isNaN(value)) throw new Error(`Invalid padding key: ${key}`);
   return value;
@@ -67,15 +68,43 @@ const generatePadding = (type: string, key: string | number): Padding => {
   }
 };
 
-const p: Record<string, Padding | ((key: string | number) => Padding)> = {};
+// prettier-ignore
+const p: Record<string, Padding | ((...keys: Array<string | number>) => Padding)> = {};
 
-Object.keys(paddingValues).forEach((key) => {
+const allPaddingKeys = [...Object.keys(paddingValues), 'auto'];
+
+allPaddingKeys.forEach((key) => {
   ['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe'].forEach((type) => {
     p[`${type}_${key}`] = generatePadding(type, key);
   });
 });
 
 ['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe'].forEach((type) => {
+  if (type === 'p') {
+    p[`${type}_`] = (...keys: Array<string | number>): Padding => {
+      if (keys.length === 1) return generatePadding(type, keys[0]);
+      if (keys.length === 2) {
+        const vertical = getPaddingValue(keys[0]);
+        const horizontal = getPaddingValue(keys[1]);
+        return { paddingVertical: vertical, paddingHorizontal: horizontal };
+      }
+      if (keys.length === 4) {
+        const top = getPaddingValue(keys[0]);
+        const right = getPaddingValue(keys[1]);
+        const bottom = getPaddingValue(keys[2]);
+        const left = getPaddingValue(keys[3]);
+        return {
+          paddingTop: top,
+          paddingRight: right,
+          paddingBottom: bottom,
+          paddingLeft: left,
+        };
+      }
+      throw new Error('p_ expects 1, 2, or 4 values');
+    };
+    return;
+  }
+
   p[`${type}_`] = (key: string | number): Padding => generatePadding(type, key);
 });
 
@@ -88,5 +117,10 @@ Object.keys(paddingValues).forEach((key) => {
 // const paddingRightStyle = p.pr_1; // { paddingRight: 4 }
 // const paddingLeftStyle = p.pl_1; // { paddingLeft: 4 }
 // const customPaddingStyle = p.p_(1000); // { padding: 1000 }
+// const customVerticalStyle = p.p_(8, 16); // { paddingTop: 8, paddingBottom: 16 }
+// const customAllSidesStyle = p.p_(4, 8, 12, 16); // { paddingTop: 4, paddingRight: 8, paddingBottom: 12, paddingLeft: 16 }
+// const autoPaddingStyle = p.p_auto; // { padding: 'auto' }
+// const autoHorizontalStyle = p.px_auto; // { paddingHorizontal: 'auto' }
+// const autoVerticalStyle = p.py_auto; // { paddingVertical: 'auto' }
 
 export default p;

@@ -1,23 +1,23 @@
 export type Padding = {
-  padding?: number;
-  paddingTop?: number;
-  paddingBottom?: number;
-  paddingLeft?: number;
-  paddingRight?: number;
-  paddingHorizontal?: number;
-  paddingVertical?: number;
-  paddingStart?: number;
-  paddingEnd?: number;
+  padding?: number | 'auto';
+  paddingTop?: number | 'auto';
+  paddingBottom?: number | 'auto';
+  paddingLeft?: number | 'auto';
+  paddingRight?: number | 'auto';
+  paddingHorizontal?: number | 'auto';
+  paddingVertical?: number | 'auto';
+  paddingStart?: number | 'auto';
+  paddingEnd?: number | 'auto';
 };
 
 export type Margin = {
-  margin?: number;
-  marginTop?: number;
-  marginBottom?: number;
-  marginLeft?: number;
-  marginRight?: number;
-  marginHorizontal?: number;
-  marginVertical?: number;
-  marginStart?: number;
-  marginEnd?: number;
+  margin?: number | 'auto';
+  marginTop?: number | 'auto';
+  marginBottom?: number | 'auto';
+  marginLeft?: number | 'auto';
+  marginRight?: number | 'auto';
+  marginHorizontal?: number | 'auto';
+  marginVertical?: number | 'auto';
+  marginStart?: number | 'auto';
+  marginEnd?: number | 'auto';
 };

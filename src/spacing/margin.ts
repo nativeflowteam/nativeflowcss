@@ -34,8 +34,9 @@ const marginValues: { [key: string]: number } = {
   '96': 384,
 };
 
-const getMarginValue = (key: string | number): number => {
+const getMarginValue = (key: string | number): number | 'auto' => {
   if (typeof key === 'number') return key;
+  if (key === 'auto') return 'auto';
   const value = marginValues[key] ?? parseInt(key, 10);
   if (isNaN(value)) throw new Error(`Invalid margin key: ${key}`);
   return value;
@@ -67,15 +68,43 @@ const generateMargin = (type: string, key: string | number): Margin => {
   }
 };
 
-const m: Record<string, Margin | ((key: string | number) => Margin)> = {};
+// prettier-ignore
+const m: Record<string, Margin | ((...keys: Array<string | number>) => Margin)> = {};
 
-Object.keys(marginValues).forEach((key) => {
+const allMarginKeys = [...Object.keys(marginValues), 'auto'];
+
+allMarginKeys.forEach((key) => {
   ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me'].forEach((type) => {
     m[`${type}_${key}`] = generateMargin(type, key);
   });
 });
 
 ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me'].forEach((type) => {
+  if (type === 'm') {
+    m[`${type}_`] = (...keys: Array<string | number>): Margin => {
+      if (keys.length === 1) return generateMargin(type, keys[0]);
+      if (keys.length === 2) {
+        const vertical = getMarginValue(keys[0]);
+        const horizontal = getMarginValue(keys[1]);
+        return { marginVertical: vertical, marginHorizontal: horizontal };
+      }
+      if (keys.length === 4) {
+        const top = getMarginValue(keys[0]);
+        const right = getMarginValue(keys[1]);
+        const bottom = getMarginValue(keys[2]);
+        const left = getMarginValue(keys[3]);
+        return {
+          marginTop: top,
+          marginRight: right,
+          marginBottom: bottom,
+          marginLeft: left,
+        };
+      }
+      throw new Error('m_ expects 1, 2, or 4 values');
+    };
+    return;
+  }
+
   m[`${type}_`] = (key: string | number): Margin => generateMargin(type, key);
 });
 
@@ -88,5 +117,10 @@ Object.keys(marginValues).forEach((key) => {
 // const marginRightStyle = m.mr_1; // { marginRight: 4 }
 // const marginLeftStyle = m.ml_1; // { marginLeft: 4 }
 // const customMarginStyle = m.m_(1000); // { margin: 1000 }
+// const customVerticalStyle = m.m_(8, 16); // { marginTop: 8, marginBottom: 16 }
+// const customAllSidesStyle = m.m_(4, 8, 12, 16); // { marginTop: 4, marginRight: 8, marginBottom: 12, marginLeft: 16 }
+// const autoMarginStyle = m.m_auto; // { margin: 'auto' }
+// const autoHorizontalStyle = m.mx_auto; // { marginHorizontal: 'auto' }
+// const autoVerticalStyle = m.my_auto; // { marginVertical: 'auto' }
 
 export default m;

@@ -1,29 +1,29 @@
-"Spacing":
-  - "src/spacing/*"
+'Spacing':
+  - 'src/spacing/*'
 
-"Flexbox":
-  - "src/flexbox/*"
+'Flexbox':
+  - 'src/flexbox/*'
 
-"Border":
-  - "src/border/*"
+'Border':
+  - 'src/border/*'
 
-"Typography":
-  - "src/typography/*"
+'Typography':
+  - 'src/typography/*'
 
-"Layout":
-  - "src/layout/*"
+'Layout':
+  - 'src/layout/*'
 
-"Effects":
-  - "src/effects/*"
+'Effects':
+  - 'src/effects/*'
 
-"Sizing":
-  - "src/sizing/*"
+'Sizing':
+  - 'src/sizing/*'
 
-"Transforms":
-  - "src/transforms/*"
+'Transforms':
+  - 'src/transforms/*'
 
-"Shadow":
-  - "src/shadow/*"
+'Shadow':
+  - 'src/shadow/*'
 
-"CI":
-  - ".github/**/*"
+'CI':
+  - '.github/**/*'

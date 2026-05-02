@@ -40,10 +40,7 @@ const pos: {
   absolute: { position: string };
   fixed: { position: string };
   sticky: { position: string };
-  [key: string]:
-    | PositionValue
-    | { position: string }
-    | ((value: number) => PositionValue);
+  [key: string]: PositionValue | { position: string } | ((value: number) => PositionValue);
 } = {
   // Position properties
   relative: { position: 'relative' },

@@ -35,26 +35,4 @@ import size from './sizing/size';
 import text from './typography/text';
 import decoration from './typography/decoration';
 
-export {
-  p,
-  m,
-  aspect,
-  object_fit,
-  display,
-  direction,
-  pos,
-  z,
-  overflow,
-  flex,
-  align,
-  justify,
-  place,
-  bdr,
-  fx,
-  shadow,
-  h,
-  w,
-  size,
-  text,
-  decoration,
-};
+export { p, m, aspect, object_fit, display, direction, pos, z, overflow, flex, align, justify, place, bdr, fx, shadow, h, w, size, text, decoration };

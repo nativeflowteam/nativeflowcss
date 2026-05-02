@@ -21,12 +21,12 @@ Before you begin working on anything, make sure you follow these steps in order 
 
 2. Clone the forked repo to your local machine with one of the commands below. You can also read the GitHub documentation on [cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-    ```bash
-    # If you have SSH set up with Git:
-    git clone git@github.com:nativeflowteam/nativeflowcss.git
-    # Otherwise for HTTPS:
-    git clone https://github.com/nativeflowteam/nativeflowcss.git
-    ```
+   ```bash
+   # If you have SSH set up with Git:
+   git clone git@github.com:nativeflowteam/nativeflowcss.git
+   # Otherwise for HTTPS:
+   git clone https://github.com/nativeflowteam/nativeflowcss.git
+   ```
 
 3. `cd` into the directory of your local clone, remember to always pull the `main` branch before you branch out from it to continue working on other sections' respective branches.
 
@@ -36,14 +36,14 @@ Once you have the repo cloned, and the local environment has been set, you can b
 
 1. Create a new branch, replacing the `<your branch name>` with an actual branch name that briefly explains the purpose of the branch in some way:
 
-    ```bash
-    git checkout -b <your branch name>
+   ```bash
+   git checkout -b <your branch name>
 
-    # Some examples:
-    git checkout -b docs_update
-    git checkout -b shadow_nits
-    git checkout -b size_value_update
-    ```
+   # Some examples:
+   git checkout -b docs_update
+   git checkout -b shadow_nits
+   git checkout -b size_value_update
+   ```
 
 2. Add commits as you work on your issue, replacing the `<your commit message>` text with your actual commit message:
 
@@ -55,40 +55,41 @@ Once you have the repo cloned, and the local environment has been set, you can b
    ```
 
 3. Sync your local environment every often so that you don't lose on any newer progress.
-    - Firstly sync your fork with the latest added commits using GitHub GUI.
+   - Firstly sync your fork with the latest added commits using GitHub GUI.
 
-      ![update-pulls](./assets/update-branch.png)
+     ![update-pulls](./assets/update-branch.png)
 
-    - Then pull those changes into your cloned repository.
+   - Then pull those changes into your cloned repository.
 
-        ```bash
-        git pull
-        ```
+     ```bash
+     git pull
+     ```
 
 4. Push your branch to our repo, replacing the `<your branch name>` with the branch you've been working on locally:
 
-    ```bash
-    git push origin <your branch name>
+   ```bash
+   git push origin <your branch name>
 
-    # An example:
-    git push origin size_fix
-    ```
+   # An example:
+   git push origin size_fix
+   ```
 
 #### Opening a Pull Request
 
 1. After pushing your changes, go to our repo on GitHub and click the "Compare & pull request" button. If you have multiple of these buttons, be sure you click the one for the correct branch.
    - If you don't see this button, you can click the branch dropdown menu and then select the branch you just pushed from your local clone:
 
-      ![GitHub branch dropdown menu](./assets/main-branch.png)
+     ![GitHub branch dropdown menu](./assets/main-branch.png)
+
    - Once you have switched to the correct branch on GitHub, click the "Contribute" dropdown and click the "Open pull request" button.
 
 2. Fill the PR template summarising all new additions to your repositories, don't directly merge without a review by maintainers.
 
 3. After your PR has been merged, delete it on the repo, just below the merged notification in the PR, there's an option to delete it, also delete that branch in your local environment and checkout to main to pull the updates.
 
-    ```bash
-    git branch -D branch_name
-    git checkout main && git pull # pull only works if you synced your fork with main repo
-    ```
+   ```bash
+   git branch -D branch_name
+   git checkout main && git pull # pull only works if you synced your fork with main repo
+   ```
 
 **Thanks for contributing to our repo, Happy Coding <3 !**

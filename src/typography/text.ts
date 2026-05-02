@@ -84,10 +84,7 @@ const text: ColuredTextStyle = {
     textShadowColor: color,
   }),
 
-  shadow_offset_: (
-    widthVal: number | string,
-    heightVal: number | string
-  ): TextStyle => ({
+  shadow_offset_: (widthVal: number | string, heightVal: number | string): TextStyle => ({
     textShadowOffset: { width: Number(widthVal), height: Number(heightVal) },
   }),
 

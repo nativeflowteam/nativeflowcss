@@ -12,8 +12,7 @@ const decoration: {
     textDecorationLine: 'line-through' as TextStyle['textDecorationLine'],
   },
   underline_line_through: {
-    textDecorationLine:
-      'underline line-through' as TextStyle['textDecorationLine'],
+    textDecorationLine: 'underline line-through' as TextStyle['textDecorationLine'],
   },
   none: { textDecorationLine: 'none' as TextStyle['textDecorationLine'] },
 

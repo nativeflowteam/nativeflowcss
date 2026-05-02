@@ -4,7 +4,7 @@
 
   <p>
 
-  Tailwind-inspired utility-first style objects for React Native, zero-deps && zero-setup, plug-n-play
+Tailwind-inspired utility-first style objects for React Native, zero-deps && zero-setup, plug-n-play
 
   </p>
 
@@ -25,7 +25,7 @@ npm install nativeflowcss
 
 ## Description
 
-  A utility-first styling object library tailored for React Native, offering a rich set of utilities such as `justify.center`, `m.b_(4)`, and `bdr.color_slate_200`. These utilities can be composed to create any design, similar to the approach used by Tailwind.
+A utility-first styling object library tailored for React Native, offering a rich set of utilities such as `justify.center`, `m.b_(4)`, and `bdr.color_slate_200`. These utilities can be composed to create any design, similar to the approach used by Tailwind.
 
 ## Documentation
 

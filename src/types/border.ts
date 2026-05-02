@@ -1,9 +1,9 @@
-import type { TextStyle } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 
 type BorderStyleFn = {
-  bivarianceHack(...args: Array<string | number>): TextStyle;
+  bivarianceHack(...args: Array<string | number>): ViewStyle | TextStyle;
 }['bivarianceHack'];
 
 export interface BorderStyles {
-  [key: string]: TextStyle | BorderStyleFn;
+  [key: string]: ViewStyle | TextStyle | BorderStyleFn;
 }

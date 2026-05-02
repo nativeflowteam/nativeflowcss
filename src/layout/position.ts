@@ -1,4 +1,4 @@
-import type { PositionValue } from '../types/layout';
+import type { PositionPreset, PositionValue } from '../types/layout';
 
 const positions: { [key: string]: number } = {
   '0': 0,
@@ -34,13 +34,18 @@ const positions: { [key: string]: number } = {
   '96': 384,
 };
 
-// Now explicitly include the custom methods and the index signature for dynamically generated properties
-const pos: {
-  relative: { position: string };
-  absolute: { position: string };
-  fixed: { position: string };
-  sticky: { position: string };
-  [key: string]: PositionValue | { position: string } | ((value: number) => PositionValue);
+type PositionFn = (value: number | string) => PositionValue;
+type PositionToken = PositionValue | PositionPreset | PositionFn;
+
+const pos: Record<string, PositionToken> & {
+  relative: PositionPreset;
+  absolute: PositionPreset;
+  fixed: PositionPreset;
+  sticky: PositionPreset;
+  r_: PositionFn;
+  t_: PositionFn;
+  l_: PositionFn;
+  b_: PositionFn;
 } = {
   // Position properties
   relative: { position: 'relative' },
@@ -51,13 +56,13 @@ const pos: {
   r_(value: number | string): PositionValue {
     return { right: Number(value) };
   },
-  t_(value: number): PositionValue {
+  t_(value: number | string): PositionValue {
     return { top: Number(value) };
   },
-  l_(value: number): PositionValue {
+  l_(value: number | string): PositionValue {
     return { left: Number(value) };
   },
-  b_(value: number): PositionValue {
+  b_(value: number | string): PositionValue {
     return { bottom: Number(value) };
   },
 };

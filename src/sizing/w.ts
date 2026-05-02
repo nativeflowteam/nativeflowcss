@@ -31,6 +31,9 @@ const w = {
   w_72: { width: 288 },
   w_80: { width: 320 },
   w_96: { width: 384 },
+  w_full: { width: '100%' },
+  w_half: { width: '50%' },
+  w_auto: { width: 'auto' },
 
   // Max-width properties
   max_0: { maxWidth: 0 },
@@ -98,20 +101,10 @@ const w = {
   min_80: { minWidth: 320 },
   min_96: { minWidth: 384 },
 
-  // Dynamic width function
-  w_: (value: number | string) => ({
-    width: typeof value === 'string' ? value : value,
-  }),
-
-  // Dynamic max-width function
-  max_: (value: number | string) => ({
-    maxWidth: typeof value === 'string' ? value : value,
-  }),
-
-  // Dynamic min-width function
-  min_: (value: number | string) => ({
-    minWidth: typeof value === 'string' ? value : value,
-  }),
+  // Dynamic width functions
+  w_: (value: number | string) => ({ width: value }),
+  max_: (value: number | string) => ({ maxWidth: value }),
+  min_: (value: number | string) => ({ minWidth: value }),
 };
 
 export default w;

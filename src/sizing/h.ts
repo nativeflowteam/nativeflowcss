@@ -31,6 +31,9 @@ const h = {
   h_72: { height: 288 },
   h_80: { height: 320 },
   h_96: { height: 384 },
+  h_full: { height: '100%' },
+  h_half: { height: '50%' },
+  h_auto: { height: 'auto' },
 
   // Max-height properties
   max_0: { maxHeight: 0 },
@@ -98,20 +101,10 @@ const h = {
   min_80: { minHeight: 320 },
   min_96: { minHeight: 384 },
 
-  // Dynamic height function
-  h_: (value: number | string) => ({
-    height: typeof value === 'string' ? value : value,
-  }),
-
-  // Dynamic max-height function
-  max_: (value: number | string) => ({
-    maxHeight: typeof value === 'string' ? value : value,
-  }),
-
-  // Dynamic min-height function
-  min_: (value: number | string) => ({
-    minHeight: typeof value === 'string' ? value : value,
-  }),
+  // Dynamic height functions
+  w_: (value: number | string) => ({ height: value }),
+  max_: (value: number | string) => ({ maxHeight: value }),
+  min_: (value: number | string) => ({ minHeight: value }),
 };
 
 export default h;

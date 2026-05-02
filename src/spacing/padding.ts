@@ -47,9 +47,9 @@ const generatePadding = (type: string, key: string | number): Padding => {
     case 'p':
       return { padding: value };
     case 'px':
-      return { paddingLeft: value, paddingRight: value };
+      return { paddingHorizontal: value };
     case 'py':
-      return { paddingTop: value, paddingBottom: value };
+      return { paddingVertical: value };
     case 'pt':
       return { paddingTop: value };
     case 'pb':
@@ -81,8 +81,8 @@ Object.keys(paddingValues).forEach((key) => {
 
 // Example usage
 // const paddingStyle = p.p_1; // { padding: 4 }
-// const paddingHorizontalStyle = p.px_1; // { paddingLeft: 4, paddingRight: 4 }
-// const paddingVerticalStyle = p.py_1; // { paddingTop: 4, paddingBottom: 4 }
+// const paddingHorizontalStyle = p.px_1; // { paddingHorizontal: 4 }
+// const paddingVerticalStyle = p.py_1; // { paddingVertical: 4 }
 // const paddingTopStyle = p.pt_1; // { paddingTop: 4 }
 // const paddingBottomStyle = p.pb_1; // { paddingBottom: 4 }
 // const paddingRightStyle = p.pr_1; // { paddingRight: 4 }

@@ -31,10 +31,10 @@ const size = {
   s_80: { width: 320, height: 320 },
   s_96: { width: 384, height: 384 },
 
-  // Dynamic size function
+  // Dynamic size functions
   s_: (value: number | string) => ({
-    width: Number(value),
-    height: Number(value),
+    width: value,
+    height: value,
   }),
 };
 

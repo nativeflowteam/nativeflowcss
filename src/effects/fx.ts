@@ -2,7 +2,7 @@ import colorList from '../constants/colorList';
 import type { ViewStyle, ImageStyle } from 'react-native';
 import type { BgStyles } from '../types/effects';
 
-const fx: BgStyles = {
+const fx = {
   // Custom background color
   bg_color_: (value: string): ViewStyle => ({
     backgroundColor: value,
@@ -44,7 +44,7 @@ const fx: BgStyles = {
   // Predefined backface visibility properties
   backface: { backfaceVisibility: 'visible' },
   backface_none: { backfaceVisibility: 'hidden' },
-};
+} as BgStyles;
 
 // Predefined opacity properties (0-10)
 Array.from({ length: 11 }, (_, i) => i / 10).forEach((value) => {

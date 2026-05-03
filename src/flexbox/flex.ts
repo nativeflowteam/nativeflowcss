@@ -1,6 +1,6 @@
-import { spacingScale } from '../constants/spacingScale';
 import { getCachedStyle } from '../internal/boundedStyleCache';
-import type { Flex } from '../types/flexbox';
+import type { Flex, FlexUtilities } from '../types/flexbox';
+import { spacingScale } from '../constants/spacingScale';
 
 const flex = {
   f_: (num: number | string = 1): Flex =>
@@ -78,14 +78,14 @@ const flex = {
   basis_auto: {
     flexBasis: 'auto',
   },
-} as Flex & Record<string, Flex | Record<string, unknown>>;
+} as FlexUtilities;
 
-for (const key of Object.keys(spacingScale)) {
-  const n = spacingScale[key as keyof typeof spacingScale];
+for (const key of Object.keys(spacingScale) as Array<keyof typeof spacingScale>) {
+  const n = spacingScale[key];
   flex[`gap_${key}`] = { gap: n };
   flex[`gap_x_${key}`] = { rowGap: n };
   flex[`gap_y_${key}`] = { columnGap: n };
   flex[`basis_${key}`] = { flexBasis: n };
 }
 
-export default flex as Flex;
+export default flex;

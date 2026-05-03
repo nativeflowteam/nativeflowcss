@@ -3,7 +3,7 @@ import type { BorderStyles } from '../types/border';
 import colorList from '../constants/colorList';
 import { viewSnippet } from '../utils/styleSnippets';
 
-const bdr: BorderStyles = {
+const bdr = {
   // Border color
   color_: (value: string): ViewStyle => ({
     borderColor: value,
@@ -291,7 +291,7 @@ const bdr: BorderStyles = {
     borderEndWidth: Number(value),
   }),
   e_w: { borderEndWidth: 1 },
-};
+} as BorderStyles;
 
 // Dynamically add width properties for 1-5 properties
 for (let i = 1; i <= 5; i++) {

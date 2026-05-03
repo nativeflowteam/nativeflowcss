@@ -80,11 +80,23 @@
     "registry": "https://registry.npmjs.org/"
   },
   "jest": {
-    "preset": "ts-jest",
+    "preset": "ts-jest/presets/default-esm",
     "testEnvironment": "node",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/lib/"
-    ]
+    "testMatch": ["<rootDir>/tests/**/*.test.ts"],
+    "extensionsToTreatAsEsm": [".ts"],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "transform": {
+      "^.+\\.ts$": [
+        "ts-jest",
+        {
+          "useESM": true,
+          "tsconfig": "tsconfig.json"
+        }
+      ]
+    },
+    "modulePathIgnorePatterns": ["<rootDir>/lib/"]
   },
   "commitlint": {
     "extends": [

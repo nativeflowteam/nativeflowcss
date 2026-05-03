@@ -11,10 +11,10 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "ignoreDeprecations": "6.0",
-    "rootDir": "./src",
+    "rootDir": ".",
     "outDir": "lib",
     "types": ["jest", "node"]
   },
-  "include": ["src"],
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
   "exclude": ["node_modules", "lib", "example"]
 }

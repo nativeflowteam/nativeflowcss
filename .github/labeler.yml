@@ -27,3 +27,6 @@
 
 'CI':
   - '.github/**/*'
+
+'Tests':
+  - 'tests/*'

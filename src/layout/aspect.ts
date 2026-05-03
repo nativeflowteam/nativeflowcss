@@ -24,17 +24,15 @@ const getAspectRatioValue = (key: string | number): number | string => {
   return value;
 };
 
-const aspect = {
-  custom_: (key: string | number): AspectRatio => {
-    return { aspectRatio: getAspectRatioValue(key) };
-  },
-} as { [key: string]: AspectRatio } & {
-  custom_: (key: string | number) => AspectRatio;
+const aspect: Record<string, AspectRatio | ((key: string | number) => AspectRatio)> = {
+  custom_: (key: string | number): AspectRatio => ({
+    aspectRatio: getAspectRatioValue(key),
+  }),
 };
 
-Object.keys(aspectRatioValues).forEach((key) => {
+for (const key of Object.keys(aspectRatioValues)) {
   aspect[key] = { aspectRatio: getAspectRatioValue(key) };
-});
+}
 
 // Example usage
 // const autoAspectRatio = aspect.auto; // { aspectRatio: 'auto' }

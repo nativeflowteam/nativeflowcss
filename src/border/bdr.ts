@@ -1,25 +1,26 @@
-import type { TextStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
 import type { BorderStyles } from '../types/border';
-import colorList from '../utils/colorList';
+import colorList from '../constants/colorList';
+import { viewSnippet } from '../utils/styleSnippets';
 
 const bdr: BorderStyles = {
   // Border color
-  color_: (value: string): TextStyle => ({
+  color_: (value: string): ViewStyle => ({
     borderColor: value,
   }),
 
   // Border width
-  w_: (value: number | string): TextStyle => ({
+  w_: (value: number | string): ViewStyle => ({
     borderWidth: Number(value),
   }),
 
   // Border style
-  solid: { borderStyle: 'solid' as TextStyle['borderStyle'] },
-  dotted: { borderStyle: 'dotted' as TextStyle['borderStyle'] },
-  dashed: { borderStyle: 'dashed' as TextStyle['borderStyle'] },
+  solid: viewSnippet({ borderStyle: 'solid' }),
+  dotted: viewSnippet({ borderStyle: 'dotted' }),
+  dashed: viewSnippet({ borderStyle: 'dashed' }),
 
   // Border radius
-  rounded_: (value: number | string): TextStyle => ({
+  rounded_: (value: number | string): ViewStyle => ({
     borderRadius: Number(value),
   }),
   rounded_none: { borderRadius: 0 },
@@ -33,7 +34,7 @@ const bdr: BorderStyles = {
   rounded_full: { borderRadius: 9999 },
 
   // Start radius
-  rounded_s_: (value: number | string): TextStyle => ({
+  rounded_s_: (value: number | string): ViewStyle => ({
     borderStartStartRadius: Number(value),
     borderEndStartRadius: Number(value),
   }),
@@ -48,7 +49,7 @@ const bdr: BorderStyles = {
   rounded_s_full: { borderStartStartRadius: 9999, borderEndStartRadius: 9999 },
 
   // End radius
-  rounded_e_: (value: number | string): TextStyle => ({
+  rounded_e_: (value: number | string): ViewStyle => ({
     borderStartEndRadius: Number(value),
     borderEndEndRadius: Number(value),
   }),
@@ -63,7 +64,7 @@ const bdr: BorderStyles = {
   rounded_e_full: { borderStartEndRadius: 9999, borderEndEndRadius: 9999 },
 
   // Top radius
-  rounded_t_: (value: number | string): TextStyle => ({
+  rounded_t_: (value: number | string): ViewStyle => ({
     borderTopLeftRadius: Number(value),
     borderTopRightRadius: Number(value),
   }),
@@ -78,7 +79,7 @@ const bdr: BorderStyles = {
   rounded_t_full: { borderTopLeftRadius: 9999, borderTopRightRadius: 9999 },
 
   // Right radius
-  rounded_r_: (value: number | string): TextStyle => ({
+  rounded_r_: (value: number | string): ViewStyle => ({
     borderTopRightRadius: Number(value),
     borderBottomRightRadius: Number(value),
   }),
@@ -93,7 +94,7 @@ const bdr: BorderStyles = {
   rounded_r_full: { borderTopRightRadius: 9999, borderBottomRightRadius: 9999 },
 
   // Bottom radius
-  rounded_b_: (value: number | string): TextStyle => ({
+  rounded_b_: (value: number | string): ViewStyle => ({
     borderBottomRightRadius: Number(value),
     borderBottomLeftRadius: Number(value),
   }),
@@ -111,7 +112,7 @@ const bdr: BorderStyles = {
   },
 
   // Left radius
-  rounded_l_: (value: number | string): TextStyle => ({
+  rounded_l_: (value: number | string): ViewStyle => ({
     borderTopLeftRadius: Number(value),
     borderBottomLeftRadius: Number(value),
   }),
@@ -126,7 +127,7 @@ const bdr: BorderStyles = {
   rounded_l_full: { borderTopLeftRadius: 9999, borderBottomLeftRadius: 9999 },
 
   // Start-Start radius
-  rounded_ss_: (value: number | string): TextStyle => ({
+  rounded_ss_: (value: number | string): ViewStyle => ({
     borderStartStartRadius: Number(value),
   }),
   rounded_ss_none: { borderStartStartRadius: 0 },
@@ -140,7 +141,7 @@ const bdr: BorderStyles = {
   rounded_ss_full: { borderStartStartRadius: 9999 },
 
   // Start-End radius
-  rounded_se_: (value: number | string): TextStyle => ({
+  rounded_se_: (value: number | string): ViewStyle => ({
     borderStartEndRadius: Number(value),
   }),
   rounded_se_none: { borderStartEndRadius: 0 },
@@ -154,7 +155,7 @@ const bdr: BorderStyles = {
   rounded_se_full: { borderStartEndRadius: 9999 },
 
   // End-End radius
-  rounded_ee_: (value: number | string): TextStyle => ({
+  rounded_ee_: (value: number | string): ViewStyle => ({
     borderEndEndRadius: Number(value),
   }),
   rounded_ee_none: { borderEndEndRadius: 0 },
@@ -168,7 +169,7 @@ const bdr: BorderStyles = {
   rounded_ee_full: { borderEndEndRadius: 9999 },
 
   // End-Start radius
-  rounded_es_: (value: number | string): TextStyle => ({
+  rounded_es_: (value: number | string): ViewStyle => ({
     borderEndStartRadius: Number(value),
   }),
   rounded_es_none: { borderEndStartRadius: 0 },
@@ -182,7 +183,7 @@ const bdr: BorderStyles = {
   rounded_es_full: { borderEndStartRadius: 9999 },
 
   // Top-Left radius
-  rounded_tl_: (value: number | string): TextStyle => ({
+  rounded_tl_: (value: number | string): ViewStyle => ({
     borderTopLeftRadius: Number(value),
   }),
   rounded_tl_none: { borderTopLeftRadius: 0 },
@@ -196,7 +197,7 @@ const bdr: BorderStyles = {
   rounded_tl_full: { borderTopLeftRadius: 9999 },
 
   // Top-Right radius
-  rounded_tr_: (value: number | string): TextStyle => ({
+  rounded_tr_: (value: number | string): ViewStyle => ({
     borderTopRightRadius: Number(value),
   }),
   rounded_tr_none: { borderTopRightRadius: 0 },
@@ -210,7 +211,7 @@ const bdr: BorderStyles = {
   rounded_tr_full: { borderTopRightRadius: 9999 },
 
   // Bottom-Right radius
-  rounded_br_: (value: number | string): TextStyle => ({
+  rounded_br_: (value: number | string): ViewStyle => ({
     borderBottomRightRadius: Number(value),
   }),
   rounded_br_none: { borderBottomRightRadius: 0 },
@@ -224,7 +225,7 @@ const bdr: BorderStyles = {
   rounded_br_full: { borderBottomRightRadius: 9999 },
 
   // Bottom-left radius
-  rounded_bl_: (value: number | string): TextStyle => ({
+  rounded_bl_: (value: number | string): ViewStyle => ({
     borderBottomLeftRadius: Number(value),
   }),
   rounded_bl_none: { borderBottomLeftRadius: 0 },
@@ -238,55 +239,55 @@ const bdr: BorderStyles = {
   rounded_bl_full: { borderBottomLeftRadius: 9999 },
 
   // Border bottom properties
-  b_color_: (value: string): TextStyle => ({
+  b_color_: (value: string): ViewStyle => ({
     borderBottomColor: value,
   }),
-  b_w_: (value: number | string): TextStyle => ({
+  b_w_: (value: number | string): ViewStyle => ({
     borderBottomWidth: Number(value),
   }),
   b_w: { borderBottomWidth: 1 },
 
   // Border left properties
-  l_color_: (value: string): TextStyle => ({
+  l_color_: (value: string): ViewStyle => ({
     borderLeftColor: value,
   }),
-  l_w_: (value: number | string): TextStyle => ({
+  l_w_: (value: number | string): ViewStyle => ({
     borderLeftWidth: Number(value),
   }),
   l_w: { borderLeftWidth: 1 },
 
   // Border right properties
-  r_color_: (value: string): TextStyle => ({
+  r_color_: (value: string): ViewStyle => ({
     borderRightColor: value,
   }),
-  r_w_: (value: number | string): TextStyle => ({
+  r_w_: (value: number | string): ViewStyle => ({
     borderRightWidth: Number(value),
   }),
   r_w: { borderRightWidth: 1 },
 
   // Border top properties
-  t_color_: (value: string): TextStyle => ({
+  t_color_: (value: string): ViewStyle => ({
     borderTopColor: value,
   }),
-  t_w_: (value: number | string): TextStyle => ({
+  t_w_: (value: number | string): ViewStyle => ({
     borderTopWidth: Number(value),
   }),
   t_w: { borderTopWidth: 1 },
 
   // Border start properties
-  s_color_: (value: string): TextStyle => ({
+  s_color_: (value: string): ViewStyle => ({
     borderStartColor: value,
   }),
-  s_w_: (value: number | string): TextStyle => ({
+  s_w_: (value: number | string): ViewStyle => ({
     borderStartWidth: Number(value),
   }),
   s_w: { borderStartWidth: 1 },
 
   // Border end properties
-  e_color_: (value: string): TextStyle => ({
+  e_color_: (value: string): ViewStyle => ({
     borderEndColor: value,
   }),
-  e_w_: (value: number | string): TextStyle => ({
+  e_w_: (value: number | string): ViewStyle => ({
     borderEndWidth: Number(value),
   }),
   e_w: { borderEndWidth: 1 },
@@ -294,44 +295,44 @@ const bdr: BorderStyles = {
 
 // Dynamically add width properties for 1-5 properties
 for (let i = 1; i <= 5; i++) {
-  bdr[`w_${i}`] = { borderWidth: i } as TextStyle;
-  bdr[`b_w_${i}`] = { borderBottomWidth: i } as TextStyle;
-  bdr[`l_w_${i}`] = { borderLeftWidth: i } as TextStyle;
-  bdr[`r_w_${i}`] = { borderRightWidth: i } as TextStyle;
-  bdr[`t_w_${i}`] = { borderTopWidth: i } as TextStyle;
-  bdr[`s_w_${i}`] = { borderStartWidth: i } as TextStyle;
-  bdr[`e_w_${i}`] = { borderEndWidth: i } as TextStyle;
+  bdr[`w_${i}`] = { borderWidth: i };
+  bdr[`b_w_${i}`] = { borderBottomWidth: i };
+  bdr[`l_w_${i}`] = { borderLeftWidth: i };
+  bdr[`r_w_${i}`] = { borderRightWidth: i };
+  bdr[`t_w_${i}`] = { borderTopWidth: i };
+  bdr[`s_w_${i}`] = { borderStartWidth: i };
+  bdr[`e_w_${i}`] = { borderEndWidth: i };
 }
 
 // Dynamically add color properties
 Object.keys(colorList).forEach((colorKey) => {
   bdr[`color_${colorKey}`] = {
     borderColor: colorList[colorKey],
-  } as TextStyle;
+  };
 
   bdr[`b_color_${colorKey}`] = {
     borderBottomColor: colorList[colorKey],
-  } as TextStyle;
+  };
 
   bdr[`l_color_${colorKey}`] = {
     borderLeftColor: colorList[colorKey],
-  } as TextStyle;
+  };
 
   bdr[`r_color_${colorKey}`] = {
     borderRightColor: colorList[colorKey],
-  } as TextStyle;
+  };
 
   bdr[`t_color_${colorKey}`] = {
     borderTopColor: colorList[colorKey],
-  } as TextStyle;
+  };
 
   bdr[`s_color_${colorKey}`] = {
     borderStartColor: colorList[colorKey],
-  } as TextStyle;
+  };
 
   bdr[`e_color_${colorKey}`] = {
     borderEndColor: colorList[colorKey],
-  } as TextStyle;
+  };
 });
 
 export default bdr;

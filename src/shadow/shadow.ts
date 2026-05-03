@@ -1,5 +1,5 @@
 import type { ViewStyle } from 'react-native';
-import colorList from '../utils/colorList';
+import colorList from '../constants/colorList';
 import type { ShadowStyles } from '../types/effects';
 
 const shadow: ShadowStyles = {
@@ -40,19 +40,19 @@ const shadow: ShadowStyles = {
 for (let i = 1; i <= 5; i++) {
   shadow[`offset_${i}`] = {
     shadowOffset: { width: i, height: i },
-  } as ViewStyle;
+  };
 }
 
 // Dynamically add opacity properties for 1-24 levels
 for (let i = 1; i <= 24; i++) {
-  shadow[`opacity_${i}`] = { shadowOpacity: i } as ViewStyle;
+  shadow[`opacity_${i}`] = { shadowOpacity: i };
 }
 
 // Dynamically add color properties
 Object.keys(colorList).forEach((colorKey) => {
   shadow[`color_${colorKey}`] = {
     shadowColor: colorList[colorKey],
-  } as ViewStyle;
+  };
 });
 
 export default shadow;

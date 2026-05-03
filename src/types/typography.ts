@@ -1,9 +1,8 @@
 import type { TextStyle } from 'react-native';
+import type { VariadicStyleFn } from './internal';
 
-type TextStyleFn = {
-  bivarianceHack(...args: Array<string | number>): TextStyle;
-}['bivarianceHack'];
+export type TextStyleFn = VariadicStyleFn<TextStyle>;
 
-export interface ColuredTextStyle {
+export interface ColoredTextStyle {
   [key: string]: TextStyle | TextStyleFn;
 }

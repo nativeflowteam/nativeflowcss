@@ -1,12 +1,8 @@
 import type { ViewStyle, ImageStyle } from 'react-native';
+import type { VariadicStyleFn } from './internal';
 
-type BgStyleFn = {
-  bivarianceHack(...args: Array<string | number>): ViewStyle | ImageStyle;
-}['bivarianceHack'];
-
-type ShadowStyleFn = {
-  bivarianceHack(...args: Array<string | number>): ViewStyle;
-}['bivarianceHack'];
+export type BgStyleFn = VariadicStyleFn<ViewStyle | ImageStyle>;
+export type ShadowStyleFn = VariadicStyleFn<ViewStyle>;
 
 export interface BgStyles {
   [key: string]: ViewStyle | ImageStyle | BgStyleFn;

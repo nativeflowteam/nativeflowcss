@@ -68,3 +68,6 @@ jobs:
 
       - name: Build package
         run: npm run build
+
+      - name: Check published bundle size
+        run: npm run check:size

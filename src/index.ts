@@ -37,11 +37,12 @@ import decoration from './typography/decoration';
 
 export { p, m, aspect, object_fit, display, direction, pos, z, overflow, flex, align, justify, place, bdr, fx, shadow, h, w, size, text, decoration };
 
-export type { Padding, Margin } from './types/spacing';
-export type { Flex } from './types/flexbox';
+export type { Padding, Margin, PaddingStyles, MarginStyles, PaddingStaticToken, MarginStaticToken, SpacingScaleOrAuto } from './types/spacing';
+export type { HeightStyles, WidthStyles, HeightStylesCore, WidthStylesCore, HeightSpacingToken, WidthSpacingToken } from './types/sizing';
+export type { Flex, FlexUtilities, FlexUtilitiesCore, FlexSpacingToken, SpacingScaleKey } from './types/flexbox';
 export type { AspectRatio, Direction, Display, SizeMode, PositionValue, PositionPreset } from './types/layout';
-export type { BorderStyles, BorderStyleFn } from './types/border';
-export type { ColoredTextStyle, TextStyleFn } from './types/typography';
-export type { BgStyles, BgStyleFn, ShadowStyles, ShadowStyleFn } from './types/effects';
+export type { BorderStyles, BorderStyleCallables, BorderStyleFn } from './types/border';
+export type { ColoredTextStyle, ColoredTextStyleCallables, TextStyleFn, DecorationStyles, DecorationStyleCallables } from './types/typography';
+export type { BgStyles, BgStyleCallables, BgStyleFn, ShadowStyles, ShadowStyleCallables, ShadowStyleFn } from './types/effects';
 export type { DynamicArg, DynamicSingleFn, DynamicSpacingFn, DynamicStyleMap } from './types/maps';
 export type { VariadicStyleFn, StyleMap } from './types/internal';

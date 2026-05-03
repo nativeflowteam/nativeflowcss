@@ -1,7 +1,7 @@
 import { getCachedStyle } from '../internal/boundedStyleCache';
 import { resolveSpacingValue, wrapLazySpacingProxy } from '../internal/spacingAxisMap';
-import type { DynamicArg, DynamicStyleMap } from '../types/maps';
-import type { Margin } from '../types/spacing';
+import type { DynamicArg } from '../types/maps';
+import type { Margin, MarginStyles } from '../types/spacing';
 
 const M_NAMES = ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me'] as const;
 const M_PREFIXES: readonly string[] = ['mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me', 'm'];
@@ -32,7 +32,7 @@ function buildMargin(type: string, key: string | number): Margin {
   }
 }
 
-function createMarginMap(): DynamicStyleMap<Margin> {
+function createMarginMap(): MarginStyles {
   const base: Record<string, unknown> = {};
 
   base.m_ = (...keys: Array<DynamicArg>): Margin => {
@@ -61,7 +61,7 @@ function createMarginMap(): DynamicStyleMap<Margin> {
     base[`${t}_`] = (key: DynamicArg): Margin => getCachedStyle(`${t}|${key}`, () => buildMargin(t, key));
   }
 
-  return wrapLazySpacingProxy<Margin>(base, M_PREFIXES, buildMargin, 'margin');
+  return wrapLazySpacingProxy<Margin>(base, M_PREFIXES, buildMargin, 'margin') as MarginStyles;
 }
 
 const m = createMarginMap();

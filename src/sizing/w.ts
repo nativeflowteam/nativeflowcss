@@ -1,5 +1,6 @@
 import { spacingScale } from '../constants/spacingScale';
 import { getCachedStyle } from '../internal/boundedStyleCache';
+import type { WidthStyles } from '../types/sizing';
 
 const w = {
   w_full: { width: '100%' },
@@ -9,10 +10,10 @@ const w = {
   w_: (value: number | string) => getCachedStyle(`w|${value}`, () => ({ width: value })),
   max_: (value: number | string) => getCachedStyle(`wmax|${value}`, () => ({ maxWidth: value })),
   min_: (value: number | string) => getCachedStyle(`wmin|${value}`, () => ({ minWidth: value })),
-} as Record<string, unknown>;
+} as WidthStyles;
 
-for (const key of Object.keys(spacingScale)) {
-  const n = spacingScale[key as keyof typeof spacingScale];
+for (const key of Object.keys(spacingScale) as Array<keyof typeof spacingScale>) {
+  const n = spacingScale[key];
   w[`w_${key}`] = { width: n };
   w[`max_${key}`] = { maxWidth: n };
   w[`min_${key}`] = { minWidth: n };

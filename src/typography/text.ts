@@ -3,7 +3,7 @@ import type { ColoredTextStyle } from '../types/typography';
 import colorList from '../constants/colorList';
 import { textSnippet } from '../utils/styleSnippets';
 
-const text: ColoredTextStyle = {
+const text = {
   // color
   color_: (value: string): TextStyle => ({
     color: value,
@@ -101,7 +101,7 @@ const text: ColoredTextStyle = {
   select_none: textSnippet({ userSelect: 'none' }),
   select_contain: textSnippet({ userSelect: 'contain' }),
   select_all: textSnippet({ userSelect: 'all' }),
-};
+} as ColoredTextStyle;
 
 Object.keys(colorList).forEach((colorKey) => {
   const hex = colorList[colorKey];

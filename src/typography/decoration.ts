@@ -1,13 +1,9 @@
 import type { TextStyle } from 'react-native';
 import colorList from '../constants/colorList';
-import type { VariadicStyleFn } from '../types/internal';
+import type { DecorationStyles } from '../types/typography';
 import { textSnippet } from '../utils/styleSnippets';
 
-type DecorationFn = VariadicStyleFn<TextStyle>;
-
-const decoration: Record<string, TextStyle | DecorationFn> & {
-  color_: DecorationFn;
-} = {
+const decoration = {
   // Text decoration line
   underline: textSnippet({
     textDecorationLine: 'underline',
@@ -38,7 +34,7 @@ const decoration: Record<string, TextStyle | DecorationFn> & {
   color_: (color: string): TextStyle => ({
     textDecorationColor: color,
   }),
-};
+} as DecorationStyles;
 
 // Dynamically add color properties
 Object.keys(colorList).forEach((colorKey) => {

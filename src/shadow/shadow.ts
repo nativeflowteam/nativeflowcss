@@ -2,7 +2,7 @@ import type { ViewStyle } from 'react-native';
 import colorList from '../constants/colorList';
 import type { ShadowStyles } from '../types/effects';
 
-const shadow: ShadowStyles = {
+const shadow = {
   // Shadow color
   color_: (value: string): ViewStyle => ({
     shadowColor: value,
@@ -34,7 +34,7 @@ const shadow: ShadowStyles = {
   rounded_2xl: { shadowRadius: 16 },
   rounded_3xl: { shadowRadius: 24 },
   rounded_full: { shadowRadius: 9999 },
-};
+} as ShadowStyles;
 
 // Dynamically add offset properties for 1-5 levels
 for (let i = 1; i <= 5; i++) {

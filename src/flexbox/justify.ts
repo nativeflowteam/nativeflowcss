@@ -1,3 +1,5 @@
+import type { ViewStyle } from 'react-native';
+
 const justify = {
   center: {
     justifyContent: 'center',
@@ -17,6 +19,6 @@ const justify = {
   evenly: {
     justifyContent: 'space-evenly',
   },
-};
+} satisfies Record<string, ViewStyle>;
 
 export default justify;

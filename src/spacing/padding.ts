@@ -1,7 +1,7 @@
 import { getCachedStyle } from '../internal/boundedStyleCache';
 import { resolveSpacingValue, wrapLazySpacingProxy } from '../internal/spacingAxisMap';
-import type { DynamicArg, DynamicStyleMap } from '../types/maps';
-import type { Padding } from '../types/spacing';
+import type { DynamicArg } from '../types/maps';
+import type { Padding, PaddingStyles } from '../types/spacing';
 
 const P_NAMES = ['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe'] as const;
 const P_PREFIXES: readonly string[] = ['px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe', 'p'];
@@ -32,7 +32,7 @@ function buildPadding(type: string, key: string | number): Padding {
   }
 }
 
-function createPaddingMap(): DynamicStyleMap<Padding> {
+function createPaddingMap(): PaddingStyles {
   const base: Record<string, unknown> = {};
 
   base.p_ = (...keys: Array<DynamicArg>): Padding => {
@@ -61,7 +61,7 @@ function createPaddingMap(): DynamicStyleMap<Padding> {
     base[`${t}_`] = (key: DynamicArg): Padding => getCachedStyle(`${t}|${key}`, () => buildPadding(t, key));
   }
 
-  return wrapLazySpacingProxy<Padding>(base, P_PREFIXES, buildPadding, 'padding');
+  return wrapLazySpacingProxy<Padding>(base, P_PREFIXES, buildPadding, 'padding') as PaddingStyles;
 }
 
 const p = createPaddingMap();

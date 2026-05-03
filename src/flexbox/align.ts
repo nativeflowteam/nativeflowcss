@@ -1,3 +1,5 @@
+import type { ViewStyle } from 'react-native';
+
 const align = {
   items_center: {
     alignItems: 'center',
@@ -50,6 +52,6 @@ const align = {
   self_baseline: {
     alignSelf: 'baseline',
   },
-};
+} satisfies Record<string, ViewStyle>;
 
 export default align;

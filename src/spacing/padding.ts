@@ -1,19 +1,13 @@
-import { spacingScale } from '../constants/spacingScale';
-import type { Padding } from '../types/spacing';
+import { getCachedStyle } from '../internal/boundedStyleCache';
+import { resolveSpacingValue, wrapLazySpacingProxy } from '../internal/spacingAxisMap';
 import type { DynamicArg, DynamicStyleMap } from '../types/maps';
+import type { Padding } from '../types/spacing';
 
-const paddingLookup: Record<string, number> = spacingScale;
+const P_NAMES = ['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe'] as const;
+const P_PREFIXES: readonly string[] = ['px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe', 'p'];
 
-const getPaddingValue = (key: string | number): number | 'auto' => {
-  if (typeof key === 'number') return key;
-  if (key === 'auto') return 'auto';
-  const value = paddingLookup[key] ?? parseInt(key, 10);
-  if (isNaN(value)) throw new Error(`Invalid padding key: ${key}`);
-  return value;
-};
-
-const generatePadding = (type: string, key: string | number): Padding => {
-  const value = getPaddingValue(key);
+function buildPadding(type: string, key: string | number): Padding {
+  const value = resolveSpacingValue(key, 'padding');
   switch (type) {
     case 'p':
       return { padding: value };
@@ -36,61 +30,40 @@ const generatePadding = (type: string, key: string | number): Padding => {
     default:
       return {};
   }
-};
+}
 
-// prettier-ignore
-const p: DynamicStyleMap<Padding> = {};
+function createPaddingMap(): DynamicStyleMap<Padding> {
+  const base: Record<string, unknown> = {};
 
-const allPaddingKeys = [...Object.keys(paddingLookup), 'auto'];
+  base.p_ = (...keys: Array<DynamicArg>): Padding => {
+    if (keys.length === 1) {
+      return getCachedStyle(`p|1|${keys[0]}`, () => buildPadding('p', keys[0]));
+    }
+    if (keys.length === 2) {
+      return getCachedStyle(`p|2|${keys[0]}|${keys[1]}`, () => ({
+        paddingVertical: resolveSpacingValue(keys[0], 'padding'),
+        paddingHorizontal: resolveSpacingValue(keys[1], 'padding'),
+      }));
+    }
+    if (keys.length === 4) {
+      return getCachedStyle(`p|4|${keys.join('|')}`, () => ({
+        paddingTop: resolveSpacingValue(keys[0], 'padding'),
+        paddingRight: resolveSpacingValue(keys[1], 'padding'),
+        paddingBottom: resolveSpacingValue(keys[2], 'padding'),
+        paddingLeft: resolveSpacingValue(keys[3], 'padding'),
+      }));
+    }
+    throw new Error('p_ expects 1, 2, or 4 values');
+  };
 
-allPaddingKeys.forEach((key) => {
-  ['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe'].forEach((type) => {
-    p[`${type}_${key}`] = generatePadding(type, key);
-  });
-});
-
-['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe'].forEach((type) => {
-  if (type === 'p') {
-    p[`${type}_`] = (...keys: Array<DynamicArg>): Padding => {
-      if (keys.length === 1) return generatePadding(type, keys[0]);
-      if (keys.length === 2) {
-        const vertical = getPaddingValue(keys[0]);
-        const horizontal = getPaddingValue(keys[1]);
-        return { paddingVertical: vertical, paddingHorizontal: horizontal };
-      }
-      if (keys.length === 4) {
-        const top = getPaddingValue(keys[0]);
-        const right = getPaddingValue(keys[1]);
-        const bottom = getPaddingValue(keys[2]);
-        const left = getPaddingValue(keys[3]);
-        return {
-          paddingTop: top,
-          paddingRight: right,
-          paddingBottom: bottom,
-          paddingLeft: left,
-        };
-      }
-      throw new Error('p_ expects 1, 2, or 4 values');
-    };
-    return;
+  for (const t of P_NAMES) {
+    if (t === 'p') continue;
+    base[`${t}_`] = (key: DynamicArg): Padding => getCachedStyle(`${t}|${key}`, () => buildPadding(t, key));
   }
 
-  p[`${type}_`] = (key: DynamicArg): Padding => generatePadding(type, key);
-});
+  return wrapLazySpacingProxy<Padding>(base, P_PREFIXES, buildPadding, 'padding');
+}
 
-// Example usage
-// const paddingStyle = p.p_1; // { padding: 4 }
-// const paddingHorizontalStyle = p.px_1; // { paddingHorizontal: 4 }
-// const paddingVerticalStyle = p.py_1; // { paddingVertical: 4 }
-// const paddingTopStyle = p.pt_1; // { paddingTop: 4 }
-// const paddingBottomStyle = p.pb_1; // { paddingBottom: 4 }
-// const paddingRightStyle = p.pr_1; // { paddingRight: 4 }
-// const paddingLeftStyle = p.pl_1; // { paddingLeft: 4 }
-// const customPaddingStyle = p.p_(1000); // { padding: 1000 }
-// const customVerticalStyle = p.p_(8, 16); // { paddingTop: 8, paddingBottom: 16 }
-// const customAllSidesStyle = p.p_(4, 8, 12, 16); // { paddingTop: 4, paddingRight: 8, paddingBottom: 12, paddingLeft: 16 }
-// const autoPaddingStyle = p.p_auto; // { padding: 'auto' }
-// const autoHorizontalStyle = p.px_auto; // { paddingHorizontal: 'auto' }
-// const autoVerticalStyle = p.py_auto; // { paddingVertical: 'auto' }
+const p = createPaddingMap();
 
 export default p;

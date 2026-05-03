@@ -1,19 +1,13 @@
-import { spacingScale } from '../constants/spacingScale';
-import type { Margin } from '../types/spacing';
+import { getCachedStyle } from '../internal/boundedStyleCache';
+import { resolveSpacingValue, wrapLazySpacingProxy } from '../internal/spacingAxisMap';
 import type { DynamicArg, DynamicStyleMap } from '../types/maps';
+import type { Margin } from '../types/spacing';
 
-const marginLookup: Record<string, number> = spacingScale;
+const M_NAMES = ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me'] as const;
+const M_PREFIXES: readonly string[] = ['mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me', 'm'];
 
-const getMarginValue = (key: string | number): number | 'auto' => {
-  if (typeof key === 'number') return key;
-  if (key === 'auto') return 'auto';
-  const value = marginLookup[key] ?? parseInt(key, 10);
-  if (isNaN(value)) throw new Error(`Invalid margin key: ${key}`);
-  return value;
-};
-
-const generateMargin = (type: string, key: string | number): Margin => {
-  const value = getMarginValue(key);
+function buildMargin(type: string, key: string | number): Margin {
+  const value = resolveSpacingValue(key, 'margin');
   switch (type) {
     case 'm':
       return { margin: value };
@@ -36,61 +30,40 @@ const generateMargin = (type: string, key: string | number): Margin => {
     default:
       return {};
   }
-};
+}
 
-// prettier-ignore
-const m: DynamicStyleMap<Margin> = {};
+function createMarginMap(): DynamicStyleMap<Margin> {
+  const base: Record<string, unknown> = {};
 
-const allMarginKeys = [...Object.keys(marginLookup), 'auto'];
+  base.m_ = (...keys: Array<DynamicArg>): Margin => {
+    if (keys.length === 1) {
+      return getCachedStyle(`m|1|${keys[0]}`, () => buildMargin('m', keys[0]));
+    }
+    if (keys.length === 2) {
+      return getCachedStyle(`m|2|${keys[0]}|${keys[1]}`, () => ({
+        marginVertical: resolveSpacingValue(keys[0], 'margin'),
+        marginHorizontal: resolveSpacingValue(keys[1], 'margin'),
+      }));
+    }
+    if (keys.length === 4) {
+      return getCachedStyle(`m|4|${keys.join('|')}`, () => ({
+        marginTop: resolveSpacingValue(keys[0], 'margin'),
+        marginRight: resolveSpacingValue(keys[1], 'margin'),
+        marginBottom: resolveSpacingValue(keys[2], 'margin'),
+        marginLeft: resolveSpacingValue(keys[3], 'margin'),
+      }));
+    }
+    throw new Error('m_ expects 1, 2, or 4 values');
+  };
 
-allMarginKeys.forEach((key) => {
-  ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me'].forEach((type) => {
-    m[`${type}_${key}`] = generateMargin(type, key);
-  });
-});
-
-['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me'].forEach((type) => {
-  if (type === 'm') {
-    m[`${type}_`] = (...keys: Array<DynamicArg>): Margin => {
-      if (keys.length === 1) return generateMargin(type, keys[0]);
-      if (keys.length === 2) {
-        const vertical = getMarginValue(keys[0]);
-        const horizontal = getMarginValue(keys[1]);
-        return { marginVertical: vertical, marginHorizontal: horizontal };
-      }
-      if (keys.length === 4) {
-        const top = getMarginValue(keys[0]);
-        const right = getMarginValue(keys[1]);
-        const bottom = getMarginValue(keys[2]);
-        const left = getMarginValue(keys[3]);
-        return {
-          marginTop: top,
-          marginRight: right,
-          marginBottom: bottom,
-          marginLeft: left,
-        };
-      }
-      throw new Error('m_ expects 1, 2, or 4 values');
-    };
-    return;
+  for (const t of M_NAMES) {
+    if (t === 'm') continue;
+    base[`${t}_`] = (key: DynamicArg): Margin => getCachedStyle(`${t}|${key}`, () => buildMargin(t, key));
   }
 
-  m[`${type}_`] = (key: DynamicArg): Margin => generateMargin(type, key);
-});
+  return wrapLazySpacingProxy<Margin>(base, M_PREFIXES, buildMargin, 'margin');
+}
 
-// Example usage
-// const marginStyle = m.m_1; // { margin: 4 }
-// const marginHorizontalStyle = m.mx_1; // {  marginHorizontal: 4 }
-// const marginVerticalStyle = m.my_1; // { marginVertical: 4 }
-// const marginTopStyle = m.mt_1; // { marginTop: 4 }
-// const marginBottomStyle = m.mb_1; // { marginBottom: 4 }
-// const marginRightStyle = m.mr_1; // { marginRight: 4 }
-// const marginLeftStyle = m.ml_1; // { marginLeft: 4 }
-// const customMarginStyle = m.m_(1000); // { margin: 1000 }
-// const customVerticalStyle = m.m_(8, 16); // { marginTop: 8, marginBottom: 16 }
-// const customAllSidesStyle = m.m_(4, 8, 12, 16); // { marginTop: 4, marginRight: 8, marginBottom: 12, marginLeft: 16 }
-// const autoMarginStyle = m.m_auto; // { margin: 'auto' }
-// const autoHorizontalStyle = m.mx_auto; // { marginHorizontal: 'auto' }
-// const autoVerticalStyle = m.my_auto; // { marginVertical: 'auto' }
+const m = createMarginMap();
 
 export default m;

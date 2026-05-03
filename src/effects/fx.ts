@@ -56,25 +56,11 @@ Array.from({ length: 10 }, (_, i) => i + 1).forEach((value) => {
   fx[`elevation_${value}`] = { elevation: value };
 });
 
-// Dynamically add background color properties from colorList
 Object.keys(colorList).forEach((colorKey) => {
-  fx[`bg_color_${colorKey}`] = {
-    backgroundColor: colorList[colorKey],
-  };
-});
-
-// Dynamically add tint color properties from colorList
-Object.keys(colorList).forEach((colorKey) => {
-  fx[`tint_${colorKey}`] = {
-    tintColor: colorList[colorKey],
-  };
-});
-
-// Dynamically add overlay color properties from colorList
-Object.keys(colorList).forEach((colorKey) => {
-  fx[`overlay_${colorKey}`] = {
-    overlayColor: colorList[colorKey],
-  };
+  const hex = colorList[colorKey];
+  fx[`bg_color_${colorKey}`] = { backgroundColor: hex };
+  fx[`tint_${colorKey}`] = { tintColor: hex };
+  fx[`overlay_${colorKey}`] = { overlayColor: hex };
 });
 
 export default fx;

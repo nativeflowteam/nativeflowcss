@@ -103,18 +103,10 @@ const text: ColoredTextStyle = {
   select_all: textSnippet({ userSelect: 'all' }),
 };
 
-// Dynamically add color properties
 Object.keys(colorList).forEach((colorKey) => {
-  text[`color_${colorKey}`] = {
-    color: colorList[colorKey],
-  };
-});
-
-// Dynamically add shadow color properties
-Object.keys(colorList).forEach((colorKey) => {
-  text[`shadow_color_${colorKey}`] = {
-    textShadowColor: colorList[colorKey],
-  };
+  const hex = colorList[colorKey];
+  text[`color_${colorKey}`] = { color: hex };
+  text[`shadow_color_${colorKey}`] = { textShadowColor: hex };
 });
 
 // Dynamically add shadow radius properties

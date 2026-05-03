@@ -27,6 +27,7 @@
   ],
   "scripts": {
     "build": "tsup",
+    "check:size": "node scripts/check-lib-size.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.ts\"",
     "test": "jest",

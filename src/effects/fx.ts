@@ -1,4 +1,4 @@
-import colorList from '../utils/colorList';
+import colorList from '../constants/colorList';
 import type { ViewStyle, ImageStyle } from 'react-native';
 import type { BgStyles } from '../types/effects';
 
@@ -60,21 +60,21 @@ Array.from({ length: 10 }, (_, i) => i + 1).forEach((value) => {
 Object.keys(colorList).forEach((colorKey) => {
   fx[`bg_color_${colorKey}`] = {
     backgroundColor: colorList[colorKey],
-  } as ViewStyle;
+  };
 });
 
 // Dynamically add tint color properties from colorList
 Object.keys(colorList).forEach((colorKey) => {
   fx[`tint_${colorKey}`] = {
     tintColor: colorList[colorKey],
-  } as ImageStyle;
+  };
 });
 
 // Dynamically add overlay color properties from colorList
 Object.keys(colorList).forEach((colorKey) => {
   fx[`overlay_${colorKey}`] = {
     overlayColor: colorList[colorKey],
-  } as ViewStyle;
+  };
 });
 
 export default fx;

@@ -1,38 +1,20 @@
+import { spacingScale } from '../constants/spacingScale';
 import type { PositionPreset, PositionValue } from '../types/layout';
 
-const positions: { [key: string]: number } = {
-  '0': 0,
-  'px': 1,
-  '1': 4,
-  '2': 8,
-  '3': 12,
-  '4': 16,
-  '5': 20,
-  '6': 24,
-  '7': 28,
-  '8': 32,
-  '9': 36,
-  '10': 40,
-  '11': 44,
-  '12': 48,
-  '14': 56,
-  '16': 64,
-  '20': 80,
-  '24': 96,
-  '28': 112,
-  '32': 128,
-  '36': 144,
-  '40': 160,
-  '44': 176,
-  '48': 192,
-  '52': 208,
-  '56': 224,
-  '60': 240,
-  '64': 256,
-  '72': 288,
-  '80': 320,
-  '96': 384,
-};
+const positionSpacing: Record<string, number> = spacingScale;
+
+function presetTop(value: number): PositionValue {
+  return { top: value };
+}
+function presetRight(value: number): PositionValue {
+  return { right: value };
+}
+function presetBottom(value: number): PositionValue {
+  return { bottom: value };
+}
+function presetLeft(value: number): PositionValue {
+  return { left: value };
+}
 
 type PositionFn = (value: number | string) => PositionValue;
 type PositionToken = PositionValue | PositionPreset | PositionFn;
@@ -67,22 +49,12 @@ const pos: Record<string, PositionToken> & {
   },
 };
 
-Object.keys(positions).forEach((posKey) => {
-  pos[`t_${posKey}`] = {
-    top: positions[posKey],
-  } as PositionValue;
-
-  pos[`r_${posKey}`] = {
-    right: positions[posKey],
-  } as PositionValue;
-
-  pos[`b_${posKey}`] = {
-    bottom: positions[posKey],
-  } as PositionValue;
-
-  pos[`l_${posKey}`] = {
-    left: positions[posKey],
-  } as PositionValue;
+Object.keys(positionSpacing).forEach((posKey) => {
+  const n = positionSpacing[posKey];
+  pos[`t_${posKey}`] = presetTop(n);
+  pos[`r_${posKey}`] = presetRight(n);
+  pos[`b_${posKey}`] = presetBottom(n);
+  pos[`l_${posKey}`] = presetLeft(n);
 });
 
 // Example usage

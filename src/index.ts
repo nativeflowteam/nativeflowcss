@@ -36,3 +36,12 @@ import text from './typography/text';
 import decoration from './typography/decoration';
 
 export { p, m, aspect, object_fit, display, direction, pos, z, overflow, flex, align, justify, place, bdr, fx, shadow, h, w, size, text, decoration };
+
+export type { Padding, Margin } from './types/spacing';
+export type { Flex } from './types/flexbox';
+export type { AspectRatio, Direction, Display, SizeMode, PositionValue, PositionPreset } from './types/layout';
+export type { BorderStyles, BorderStyleFn } from './types/border';
+export type { ColoredTextStyle, TextStyleFn } from './types/typography';
+export type { BgStyles, BgStyleFn, ShadowStyles, ShadowStyleFn } from './types/effects';
+export type { DynamicArg, DynamicSingleFn, DynamicSpacingFn, DynamicStyleMap } from './types/maps';
+export type { VariadicStyleFn, StyleMap } from './types/internal';

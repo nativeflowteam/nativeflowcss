@@ -1,34 +1,38 @@
 import type { TextStyle } from 'react-native';
-import colorList from '../utils/colorList';
+import colorList from '../constants/colorList';
+import type { VariadicStyleFn } from '../types/internal';
+import { textSnippet } from '../utils/styleSnippets';
 
-const decoration: {
-  [key: string]: TextStyle | ((color: string) => TextStyle);
+type DecorationFn = VariadicStyleFn<TextStyle>;
+
+const decoration: Record<string, TextStyle | DecorationFn> & {
+  color_: DecorationFn;
 } = {
   // Text decoration line
-  underline: {
-    textDecorationLine: 'underline' as TextStyle['textDecorationLine'],
-  },
-  line_through: {
-    textDecorationLine: 'line-through' as TextStyle['textDecorationLine'],
-  },
-  underline_line_through: {
-    textDecorationLine: 'underline line-through' as TextStyle['textDecorationLine'],
-  },
-  none: { textDecorationLine: 'none' as TextStyle['textDecorationLine'] },
+  underline: textSnippet({
+    textDecorationLine: 'underline',
+  }),
+  line_through: textSnippet({
+    textDecorationLine: 'line-through',
+  }),
+  underline_line_through: textSnippet({
+    textDecorationLine: 'underline line-through',
+  }),
+  none: textSnippet({ textDecorationLine: 'none' }),
 
   // Text decoration style
-  solid: {
-    /*ios*/ textDecorationStyle: 'solid' as TextStyle['textDecorationStyle'],
-  },
-  double: {
-    /*ios*/ textDecorationStyle: 'double' as TextStyle['textDecorationStyle'],
-  },
-  dotted: {
-    /*ios*/ textDecorationStyle: 'dotted' as TextStyle['textDecorationStyle'],
-  },
-  dashed: {
-    /*ios*/ textDecorationStyle: 'dashed' as TextStyle['textDecorationStyle'],
-  },
+  solid: textSnippet({
+    /*ios*/ textDecorationStyle: 'solid',
+  }),
+  double: textSnippet({
+    /*ios*/ textDecorationStyle: 'double',
+  }),
+  dotted: textSnippet({
+    /*ios*/ textDecorationStyle: 'dotted',
+  }),
+  dashed: textSnippet({
+    /*ios*/ textDecorationStyle: 'dashed',
+  }),
 
   // Text decoration color (iOS)
   color_: (color: string): TextStyle => ({

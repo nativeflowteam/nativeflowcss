@@ -1,8 +1,9 @@
 import type { TextStyle } from 'react-native';
-import type { ColuredTextStyle } from '../types/typography';
-import colorList from '../utils/colorList';
+import type { ColoredTextStyle } from '../types/typography';
+import colorList from '../constants/colorList';
+import { textSnippet } from '../utils/styleSnippets';
 
-const text: ColuredTextStyle = {
+const text: ColoredTextStyle = {
   // color
   color_: (value: string): TextStyle => ({
     color: value,
@@ -29,40 +30,42 @@ const text: ColuredTextStyle = {
   fs_9xl: { fontSize: 128, lineHeight: 128 },
 
   // Font styles
-  italic: { fontStyle: 'italic' as TextStyle['fontStyle'] },
-  non_italic: { fontStyle: 'normal' as TextStyle['fontStyle'] },
+  italic: textSnippet({ fontStyle: 'italic' }),
+  non_italic: textSnippet({ fontStyle: 'normal' }),
 
   // Font weights
-  fw_thin: { fontWeight: '100' as TextStyle['fontWeight'] },
-  fw_extralight: { fontWeight: '200' as TextStyle['fontWeight'] },
-  fw_light: { fontWeight: '300' as TextStyle['fontWeight'] },
-  fw_normal: { fontWeight: '400' as TextStyle['fontWeight'] },
-  fw_medium: { fontWeight: '500' as TextStyle['fontWeight'] },
-  fw_semibold: { fontWeight: '600' as TextStyle['fontWeight'] },
-  fw_bold: { fontWeight: '700' as TextStyle['fontWeight'] },
-  fw_extrabold: { fontWeight: '800' as TextStyle['fontWeight'] },
-  fw_black: { fontWeight: '900' as TextStyle['fontWeight'] },
+  fw_thin: textSnippet({ fontWeight: '100' }),
+  fw_extralight: textSnippet({ fontWeight: '200' }),
+  fw_light: textSnippet({ fontWeight: '300' }),
+  fw_normal: textSnippet({ fontWeight: '400' }),
+  fw_medium: textSnippet({ fontWeight: '500' }),
+  fw_semibold: textSnippet({ fontWeight: '600' }),
+  fw_bold: textSnippet({ fontWeight: '700' }),
+  fw_extrabold: textSnippet({ fontWeight: '800' }),
+  fw_black: textSnippet({ fontWeight: '900' }),
 
   // Font variants
-  smallcaps: {
-    /*ios*/ fontVariant: ['small-caps'] as TextStyle['fontVariant'],
-  },
-  oldstyle: {
-    /*ios*/ fontVariant: ['oldstyle-nums'] as TextStyle['fontVariant'],
-  },
-  lining: { /*ios*/ fontVariant: ['lining-nums'] as TextStyle['fontVariant'] },
-  tabular: {
-    /*ios*/ fontVariant: ['tabular-nums'] as TextStyle['fontVariant'],
-  },
-  proportional: {
-    /*ios*/ fontVariant: ['proportional-nums'] as TextStyle['fontVariant'],
-  },
+  smallcaps: textSnippet({
+    /*ios*/ fontVariant: ['small-caps'],
+  }),
+  oldstyle: textSnippet({
+    /*ios*/ fontVariant: ['oldstyle-nums'],
+  }),
+  lining: textSnippet({
+    /*ios*/ fontVariant: ['lining-nums'],
+  }),
+  tabular: textSnippet({
+    /*ios*/ fontVariant: ['tabular-nums'],
+  }),
+  proportional: textSnippet({
+    /*ios*/ fontVariant: ['proportional-nums'],
+  }),
 
   // Text transforms
-  none: { textTransform: 'none' as TextStyle['textTransform'] },
-  uppercase: { textTransform: 'uppercase' as TextStyle['textTransform'] },
-  lowercase: { textTransform: 'lowercase' as TextStyle['textTransform'] },
-  capitalize: { textTransform: 'capitalize' as TextStyle['textTransform'] },
+  none: textSnippet({ textTransform: 'none' }),
+  uppercase: textSnippet({ textTransform: 'uppercase' }),
+  lowercase: textSnippet({ textTransform: 'lowercase' }),
+  capitalize: textSnippet({ textTransform: 'capitalize' }),
 
   // Letter spacing
   tracking_tighter: { /*ios*/ letterSpacing: -2 },
@@ -73,11 +76,11 @@ const text: ColuredTextStyle = {
   tracking_widest: { /*ios*/ letterSpacing: 3 },
 
   // Text alignment
-  auto: { textAlign: 'auto' as TextStyle['textAlign'] },
-  left: { textAlign: 'left' as TextStyle['textAlign'] },
-  right: { textAlign: 'right' as TextStyle['textAlign'] },
-  center: { textAlign: 'center' as TextStyle['textAlign'] },
-  justify: { textAlign: 'justify' as TextStyle['textAlign'] },
+  auto: textSnippet({ textAlign: 'auto' }),
+  left: textSnippet({ textAlign: 'left' }),
+  right: textSnippet({ textAlign: 'right' }),
+  center: textSnippet({ textAlign: 'center' }),
+  justify: textSnippet({ textAlign: 'justify' }),
 
   // Text shadow
   shadow_color_: (color: string): TextStyle => ({
@@ -93,11 +96,11 @@ const text: ColuredTextStyle = {
   }),
 
   // User select
-  select_auto: { userSelect: 'auto' as TextStyle['userSelect'] },
-  select_text: { userSelect: 'text' as TextStyle['userSelect'] },
-  select_none: { userSelect: 'none' as TextStyle['userSelect'] },
-  select_contain: { userSelect: 'contain' as TextStyle['userSelect'] },
-  select_all: { userSelect: 'all' as TextStyle['userSelect'] },
+  select_auto: textSnippet({ userSelect: 'auto' }),
+  select_text: textSnippet({ userSelect: 'text' }),
+  select_none: textSnippet({ userSelect: 'none' }),
+  select_contain: textSnippet({ userSelect: 'contain' }),
+  select_all: textSnippet({ userSelect: 'all' }),
 };
 
 // Dynamically add color properties
